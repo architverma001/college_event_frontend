@@ -13,10 +13,17 @@ import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { Link } from 'react-router-dom'
 import './Navbar.css'
 const navigation = [
-  { name: 'Dashboard', href: '/', current: true },
-  { name: 'Jobs', href: '/jobs', current: false },
-  { name: 'Events', href: '/events', current: false },
-  { name: 'Stem events', href: '/stem', current: false },
+  { name: 'Home', href: '/', current: true },
+  { name: 'Btech', href: '/Btech/college', current: false },
+  { name: 'MBA', href: '/MBA/college', current: false },
+  { name: 'Mtech', href: '/Mtech/college', current: false },
+  { name: 'MBBS', href: '/MBBS/college', current: false },
+  { name: 'B.Com', href: '/B.Com/college', current: false },
+  { name: 'B.Sc', href: '/B.Sc/college', current: false },
+  { name: 'B.Sc(Nursing)', href: '/B.Sc(Nursing)/college', current: false },
+  { name: 'BA', href: '/BA/college', current: false },
+  { name: 'BBA', href: '/BBA/college', current: false },
+  { name: 'BCA', href: '/BCA/college', current: false },
 ]
 
 function classNames(...classes) {
@@ -25,7 +32,7 @@ function classNames(...classes) {
 
 export default function Navbar() {
   return (
-    <Disclosure as="nav" className="bg-gray-800 fixed_custom">
+    <Disclosure as="nav" className="bg-gray-800 fixed_custom top-0 w-full z-10">
       {({ open }) => (
         <>
           <div className="mx-auto px-2 sm:px-6 lg:px-8">
@@ -50,10 +57,11 @@ export default function Navbar() {
                     alt="Your Company"
                   />
                 </div>
-                <div className="hidden sm:ml-6 sm:block">
-                  <div className="flex space-x-4">
+                <div className="hidden lg:ml-6 lg:block">
+                  <div className="flex space-x-1 text-sm">
                     {navigation.map((item) => (
                       <Link
+
                         key={item.name}
                         to ={item.href}
                         className={classNames(
@@ -137,7 +145,7 @@ export default function Navbar() {
             </div>
           </div>
 
-          <DisclosurePanel className="sm:hidden">
+          <DisclosurePanel className="lg:hidden">
             <div className="space-y-1 px-2 pb-3 pt-2">
               {navigation.map((item) => (
                 <DisclosureButton
