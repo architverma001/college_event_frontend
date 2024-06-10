@@ -1,10 +1,24 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Card from './Card';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 
-const CustomCardSlider = ({ cards }) => {
+
+const CustomCardSlider = ({ cards,college }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [slidesPerView, setSlidesPerView] = useState(1);
   const containerRef = useRef(null);
+  const [containerWidth, setContainerWidth] = useState(0);
+  const carduseref = useRef(null);
+  const [cardwidth,setCardwidth] = useState(300);
+  useEffect(() => {
+    if (containerRef.current) {
+      setContainerWidth(containerRef.current.offsetWidth);
+    }
+    
+  }, []);
+
 
   const updateSlidesPerView = () => {
     if (containerRef.current) {
@@ -22,12 +36,14 @@ const CustomCardSlider = ({ cards }) => {
   }, []);
  
   // Add a function to handle automatic previous button every 3 seconds
-    useEffect(() => {
-    const interval = setInterval(() => {
-      prevSlide();
-    }, 3000);
-    return () => clearInterval(interval);
-    }, [currentIndex]);
+    // useEffect(() => {
+    // const interval = setInterval(() => {
+    //   prevSlide();
+    // }, 3000);
+    // return () => clearInterval(interval);
+    // }, [currentIndex]);
+
+
   const nextSlide = () => {
     setCurrentIndex((prevIndex) => (prevIndex + slidesPerView) % cards.length);
   };
@@ -36,47 +52,71 @@ const CustomCardSlider = ({ cards }) => {
     setCurrentIndex((prevIndex) => (prevIndex - slidesPerView + cards.length) % cards.length);
   };
 
-  return (
-    <div className="relative">
-      <div ref={containerRef} className="w-full max-w-6xl mx-auto">
-        <div className="overflow-hidden">
-        <h1 className="text-3xl sm:text-3xl md:text-4xl lg:text-4xl xl:text-5xl text-start mt-8 mx-4 mb-4 font-semibold text-gray-700">Explore our programs</h1>
 
-          <div
-            className="flex transition-transform duration-300"
-            style={{ transform: `translateX(-${currentIndex * (100 / slidesPerView)}%)` }}
-          >
-            {cards.map((card, index) => (
-              <div
-                key={index}
-                className="flex-shrink-0 p-2" // Add padding for margin
-                style={{ width: `${100 / slidesPerView}%` }}
-              >
-                <Card
-                  image={card.image}
-                  title={card.title}
-                  description={card.description}
-                  points={card.points}
-                  footer={card.footer}
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
+
+
+
+  const handleScrollLeft = () => {
+    if (containerRef.current) {
+      const scrollAmount = Math.max(280, containerWidth/2); // Limit scroll to 100 pixels or display size - 50
+      containerRef.current.scrollTo({
+        left: containerRef.current.scrollLeft - scrollAmount,
+        behavior: 'smooth',
+      });
+    }
+  };
+
+  const handleScrollRight = () => {
+    if (containerRef.current) {
+      const scrollAmount = Math.max(280, containerWidth/2); // Limit scroll to 100 pixels or display size - 50
+      containerRef.current.scrollTo({
+        left: containerRef.current.scrollLeft + scrollAmount,
+        behavior: 'smooth',
+      });
+    }
+  };
+
+
+
+  return (
+    <div className='max-width space-around'>
+      <div className='flex'>
       <button
-  onClick={prevSlide}
-  className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-gray-900 bg-opacity-70 text-white p-2 rounded-full"
+  onClick={handleScrollLeft}
+  className=" bg-opacity-70 text-black p-2 rounded-full smooth-transition"
 >
-  Prev
+         
+    
+{
+  containerWidth > 600 ? <FontAwesomeIcon icon={faChevronLeft} /> : <div></div>
+}
 </button>
-<button
-  onClick={nextSlide}
-  className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-gray-900 bg-opacity-70 text-white p-2 rounded-full"
+    <div className='flex gap-11 w-full max-w-6xl mx-auto overflow-x-auto  overflow-handle p-3'  ref={containerRef}>
+      {cards.map((card) => (
+       <Link to = {`/${college}/${card.title}`}>
+        <Card
+        image={card.image}
+        title={card.title}
+        description={card.description}
+        points={card.points}
+        footer={card.footer}/>
+        </Link>
+      ))}
+
+    </div>
+    <button
+  onClick={handleScrollRight}
+  className=" bg-opacity-70 text-black p-2 rounded-full smooth-transition"
 >
-  Next
+         
+    
+{
+  containerWidth > 600 ? <FontAwesomeIcon icon={faChevronRight} /> : <div></div>
+}
 </button>
     </div>
+  </div>
+    
   );
 };
 
