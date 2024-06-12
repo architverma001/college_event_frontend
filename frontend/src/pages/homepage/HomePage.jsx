@@ -206,7 +206,7 @@ function HomePage() {
           )}
         </button>
         <div
-          className="flex gap-11 w-full max-w-6xl mx-auto overflow-x-auto  overflow-handle"
+          className="flex gap-3 w-full max-w-6xl mx-auto overflow-x-auto  overflow-handle"
           ref={containerRef}
         >
           {collegeData.map((colleges) => (
