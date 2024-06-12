@@ -6,8 +6,8 @@ import SwipwerSlides from "./components/SwiperSlides";
 import HomePage from "./pages/homepage/HomePage";
 import Footer from "./components/footer/Footer";
 import Navbar from "./components/navbar/Navbar";
-import TopColleges from "./components/TopColleges";
 import News from "./components/news/News";
+import TopColleges from "./components/TopColleges/TopColleges";
 import TopUniversities from "./components/TopUnivesities/TopUniversities";
 import ExploreCourses from "./components/ExploreCourses/ExploreCourses";
 
@@ -60,7 +60,7 @@ function App() {
       <Navbar />
       <SwipwerSlides />
       <HomePage />
-      <TopColleges />
+      <TopColleges/>
       {loading ? (
         <h1>Loading...</h1>
       ) : (
