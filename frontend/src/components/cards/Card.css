@@ -113,7 +113,7 @@
 }
 .points-container-wrapper {
   overflow: hidden;
-  max-height: 7rem; /* Adjust as needed */
+  max-height: 6.5rem; /* Adjust as needed */
 }
 
 .points-container {

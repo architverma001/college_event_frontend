@@ -47,7 +47,7 @@ const Card = ({ image, title, description, points, footer }) => {
     <div className="points-container-wrapper">
       <div className="points-container flex flex-wrap gap-2 my-4" ref={containerRef}>
         {points.map((point, index) => (
-          <div key={index} className={`point ${hiddenIndexes.includes(index) ? 'hidden' : ''}`}>
+          <div key={index} className={`point  text-sm ${hiddenIndexes.includes(index) ? 'hidden' : ''}`}>
             {point}
           </div>
         ))}
