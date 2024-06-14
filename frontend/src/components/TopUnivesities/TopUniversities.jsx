@@ -1,4 +1,5 @@
 import React from "react";
+import './topuniversity.css'
 const UniversityCard = ({
   name,
   location,
@@ -11,7 +12,7 @@ const UniversityCard = ({
   compareLink,
   image,
 }) => (
-  <div className="bg-white shadow-md rounded-lg overflow-hidden w-[358px] max-w-[358px]">
+  <div className="bg-white shadow-md rounded-lg overflow-hidden w-[80vw] p-2 items-center max-w-[358px]">
     <div className="relative">
       <img src={image} alt={name} className="w-full h-32 object-cover" />
       <div
@@ -122,15 +123,18 @@ const TopUniversities = () => {
 
   return (
     <>
-      <div className="w-full max-w-6xl mx-auto mt-9 mb-7">
-        <h1 className=" text-gray-600 text-xl font-bold mb-4 sm:text-xl md:text-2xl lg:text-3xl xl-text-3xl ">
+      <div className="w-full max-w-6xl mx-auto mt-9 mb-7 flex flex-col manage ">
+        <h1 className=" text-gray-600 text-xl font-bold mb-4 ms-4 sm:text-xl md:text-2xl lg:text-3xl xl-text-3xl ">
           Top Universistes
         </h1>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {universities.map((uni, index) => (
-            <UniversityCard key={index} {...uni} />
-          ))}
-        </div>
+        <div className="flex justify-center">
+  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    {universities.map((uni, index) => (
+      <UniversityCard key={index} {...uni} />
+    ))}
+  </div>
+</div>
+
       </div>
       <hr />
     </>

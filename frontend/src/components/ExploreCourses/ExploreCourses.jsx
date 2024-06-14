@@ -1,133 +1,156 @@
-import React,{useState} from "react";
-
-const CourseCard = ({
-  type,
-  name,
-  duration,
-  fees,
-  totalcollege,
-  coursesLink,
-}) => (
-  <div className="bg-white shadow-md rounded-lg overflow-hidden w-[280px] max-w-[280px] p-3">
-    <div className="p-4">
-    <div className=" bg-gray-300 text-black w-[80px] rounded text-center" >
-      {type}
-    </div>
-      <p className=" text-gray-700 mb-2 mt-2 text-2xl font-semibold">{name}</p>
-      <div className="flex justify-between">
-        <p className="text-sm text-gray-700 mb-2">Duration</p>
-        <p className="text-sm text-gray-500 mb-2 font-semibold">{duration}</p>
-      </div>
-      <div className="flex justify-between">
-        <p className="text-sm text-gray-700 mb-2">Total Avg. Fees</p>
-        <p className="text-sm text-gray-500 mb-2 font-semibold">{fees}</p>
-      </div>
-      <div className="flex justify-between">
-        <p className="text-sm text-gray-700 mb-2">Colleges</p>
-        <p className="text-sm text-gray-500 mb-2 font-semibold">{totalcollege}</p>
-      </div>
-
-      <hr />
-      <div class="grid grid-rows-3 grid-flow-col gap-4">
-        <div class="row-span-3">
-          <div className="col-span">
-            <a href={coursesLink} className="text-blue-500 text-sm">
-              View All Courses and fees
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-);
+import React, { useState } from "react";
+import CourseCard from "./CourseCard"; // Assuming CourseCard component is in a separate file
+import "./ExploreCourses.css"; // Custom CSS for additional styling
 
 const ExploreCourses = () => {
+  const [selectedCourse, setSelectedCourse] = useState("Bachelors");
+  const [visibleRows, setVisibleRows] = useState(2);
+
+  const handleCourseChange = (course) => {
+    setSelectedCourse(course);
+  };
+
+  const handleShowMore = () => {
+    setVisibleRows(visibleRows + 2);
+  };
+
   const courseData = [
     {
-      type:"Full Time",
-      name:"B.Com General",
-      duration:"3 Years",
-      fees:150000,
-      totalcollege:3431,
-      coursesLink:""
+      type: "Full Time",
+      name: "B.Com General",
+      duration: "3 Years",
+      fees: "₹150,000",
+      totalcollege: 3431,
+      coursesLink: "#",
     },
     {
-      type:"Full Time",
-      name:"B.Com General",
-      duration:"3 Years",
-      fees:150000,
-      totalcollege:3431,
-      coursesLink:""
+      type: "Full Time",
+      name: "MBA",
+      duration: "2 Years",
+      fees: "₹300,000",
+      totalcollege: 2100,
+      coursesLink: "#",
     },
     {
-      type:"Full Time",
-      name:"B.Com General",
-      duration:"3 Years",
-      fees:150000,
-      totalcollege:3431,
-      coursesLink:""
+      type: "Part Time",
+      name: "Diploma in Design",
+      duration: "1 Year",
+      fees: "₹100,000",
+      totalcollege: 1500,
+      coursesLink: "#",
     },
     {
-      type:"Full Time",
-      name:"B.Com General",
-      duration:"3 Years",
-      fees:150000,
-      totalcollege:3431,
-      coursesLink:""
-    },
-    
-  ]
-  const [Course, setCourse] = useState("Bachelors");
-  const handleCourse = (course) => {
-    setCourse(course);
-  };
-  const courses = [
-    {
-      id: 1,
-      name: "Bachelors",
+      type: "Full Time",
+      name: "Ph.D. in Computer Science",
+      duration: "4 Years",
+      fees: "₹500,000",
+      totalcollege: 500,
+      coursesLink: "#",
     },
     {
-      id: 2,
-      name: "Masters",
+      type: "Full Time",
+      name: "MBA",
+      duration: "2 Years",
+      fees: "₹300,000",
+      totalcollege: 2100,
+      coursesLink: "#",
     },
     {
-      id: 3,
-      name: "Doctorate",
+      type: "Part Time",
+      name: "Diploma in Design",
+      duration: "1 Year",
+      fees: "₹100,000",
+      totalcollege: 1500,
+      coursesLink: "#",
     },
     {
-      id: 4,
-      name: "Diploma",
+      type: "Full Time",
+      name: "Ph.D. in Computer Science",
+      duration: "4 Years",
+      fees: "₹500,000",
+      totalcollege: 500,
+      coursesLink: "#",
     },
     {
-      id: 5,
-      name: "Certification",
+      type: "Full Time",
+      name: "B.Com General",
+      duration: "3 Years",
+      fees: "₹150,000",
+      totalcollege: 3431,
+      coursesLink: "#",
+    },
+    {
+      type: "Full Time",
+      name: "MBA",
+      duration: "2 Years",
+      fees: "₹300,000",
+      totalcollege: 2100,
+      coursesLink: "#",
+    },
+    {
+      type: "Part Time",
+      name: "Diploma in Design",
+      duration: "1 Year",
+      fees: "₹100,000",
+      totalcollege: 1500,
+      coursesLink: "#",
+    },
+    {
+      type: "Full Time",
+      name: "Ph.D. in Computer Science",
+      duration: "4 Years",
+      fees: "₹500,000",
+      totalcollege: 500,
+      coursesLink: "#",
     },
   ];
+
+  const courses = [
+    { id: 1, name: "Bachelors" },
+    { id: 2, name: "Masters" },
+    { id: 3, name: "Doctorate" },
+    { id: 4, name: "Diploma" },
+    { id: 5, name: "Certification" },
+  ];
+
+  const itemsToShow = visibleRows * 2; // Adjust this multiplier based on the number of columns you expect per row.
+
   return (
-    <div>
-      <div className="w-full max-w-6xl mx-auto mt-4 mb-4">
-        <h1 className=" text-gray-600 text-xl font-bold mb-4 sm:text-xl md:text-2xl lg:text-3xl xl-text-3xl ">
+    <div className="explore-courses-container">
+      <div className="max-w-6xl mx-auto mt-4 mb-4">
+        <h1 className="text-gray-600 text-2xl font-bold mb-4 sm:text-xl md:text-2xl lg:text-3xl xl:text-3xl text-custom">
           Explore Courses
         </h1>
-        <div className="flex gap-3 w-full max-w-6xl mx-auto overflow-x-auto  overflow-handle">
+        <div className="course-types flex gap-3 overflow-x-auto py-2">
           {courses.map((course) => (
             <div
               key={course.id}
-              className={`  scrollbar-hide px-6 mx-1 py-2 hover:cursor-pointer ${
-                course.name === Course ? "bg-blue" : "bg-normal"
+              className={`course-type-button px-6 py-2 rounded-lg text-center cursor-pointer whitespace-nowrap ${
+                course.name === selectedCourse
+                  ? "bg-blue-500 text-white"
+                  : "bg-gray-200 text-gray-700"
               }`}
-              onClick={() => handleCourse(course.name)}
-              style={{textDecoration: "none"}}
+              onClick={() => handleCourseChange(course.name)}
             >
               {course.name}
             </div>
           ))}
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mt-5">
-          {courseData.map((cou, index) => (
-            <CourseCard key={index} {...cou} />
+        <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mt-5`}>
+          {courseData.slice(0, itemsToShow).map((course, index) => (
+            <CourseCard key={index} {...course} />
           ))}
         </div>
+      </div>
+      <div className="flex items-center justify-center">
+        {itemsToShow < courseData.length && (
+          <button
+            onClick={handleShowMore}
+            className="bg-blue-500 text-white p-2 rounded-lg mt-2"
+          >
+            Show More
+          </button>
+        )}
       </div>
     </div>
   );

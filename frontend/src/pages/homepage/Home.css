@@ -32,3 +32,9 @@
   .smooth-transition{
     transition: all 0.5s ease-in-out;
   }
+
+ .custom_width{
+  min-width: 200px;
+  width: 80vw;
+
+ }
