@@ -10,6 +10,7 @@ import News from "./components/news/News";
 import TopColleges from "./components/TopColleges/TopColleges";
 import TopUniversities from "./components/TopUnivesities/TopUniversities";
 import ExploreCourses from "./components/ExploreCourses/ExploreCourses";
+import TopExams from "./components/TopExams/TopExams";
 
 function App() {
   const [news, setNews] = useState([]);
@@ -72,6 +73,7 @@ function App() {
       )}
       <TopUniversities />
       <ExploreCourses />
+      <TopExams />
       <Footer />
     </div>
   );
