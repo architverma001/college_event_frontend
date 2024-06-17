@@ -35,14 +35,7 @@ const CustomCardSlider = ({ cards,college }) => {
     return () => window.removeEventListener('resize', updateSlidesPerView);
   }, []);
  
-  // Add a function to handle automatic previous button every 3 seconds
-    // useEffect(() => {
-    // const interval = setInterval(() => {
-    //   prevSlide();
-    // }, 3000);
-    // return () => clearInterval(interval);
-    // }, [currentIndex]);
-
+ 
 
   const nextSlide = () => {
     setCurrentIndex((prevIndex) => (prevIndex + slidesPerView) % cards.length);
@@ -93,7 +86,7 @@ const CustomCardSlider = ({ cards,college }) => {
 </button>
     <div className='flex gap-11 w-full max-w-6xl mx-auto overflow-x-auto  overflow-handle p-3'  ref={containerRef}>
       {cards.map((card) => (
-       <Link to = {`/${college}/${card.title}`}>
+       <Link to={`/${college.toLowerCase()}/${card.url.toLowerCase()}`}>
         <Card
         image={card.image}
         title={card.title}

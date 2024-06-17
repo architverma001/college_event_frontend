@@ -27,7 +27,10 @@ const collegeData = [
         "Global Opportunities",
       ],
       footer: "Discover more",
+      url:"opportunities"
+
     },
+
     {
       image: "/ranking.svg", // Placeholder SVG image
       title: "Ranking",
@@ -39,6 +42,7 @@ const collegeData = [
         "Updated Annually",
       ],
       footer: "View Rankings",
+      url:"ranking"
     },
     {
       image: "/school.png", // Placeholder SVG image
@@ -51,6 +55,7 @@ const collegeData = [
         "Student Reviews",
       ],
       footer: "Find Now",
+      url:"findcollege"
     },
     {
       image: "/computer.png", // Placeholder SVG image
@@ -63,6 +68,7 @@ const collegeData = [
         "Key Statistics",
       ],
       footer: "Compare Now",
+      url:"comparecollege"
     },
     {
       image: "/test.jpg", // Placeholder SVG image
@@ -75,6 +81,7 @@ const collegeData = [
         "Expert Tips",
       ],
       footer: "Start Preparing",
+      url:"test"
     },
     {
       image: "/graduated.png", // Placeholder SVG image
@@ -87,6 +94,7 @@ const collegeData = [
         "Personalized Suggestions",
       ],
       footer: "Predict Now",
+      url:"collegepredictor"
     },
     {
       image: "/book.png", // Placeholder SVG image
@@ -99,6 +107,7 @@ const collegeData = [
         "Future Prospects",
       ],
       footer: "Find Courses",
+      url:"coursefinder"
     },
   ];
 
