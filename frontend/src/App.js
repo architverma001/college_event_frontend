@@ -12,6 +12,7 @@ import TopUniversities from "./components/TopUnivesities/TopUniversities";
 import ExploreCourses from "./components/ExploreCourses/ExploreCourses";
 import Search from "./components/search/Search";
 import { Route, Routes } from "react-router-dom";
+import Startup from "./pages/startup/Startup";
 
 function App() {
 
@@ -19,8 +20,9 @@ function App() {
     <div className="">
       <Navbar />
 
-      <Routes>
-        <Route path="/*" element={<HomePage />} />
+      <Routes className="">
+        <Route path="/" element={<HomePage />} />
+        <Route path="/startups" element={<Startup />} />
       </Routes>
 
 

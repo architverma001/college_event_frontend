@@ -98,7 +98,7 @@ function HomePage() {
     
       <TopColleges />
       <hr/>
-      <News/>
+      <News topic={'IIT,IIM,Indian education,Btech,MBA'}/>
       <TopUniversities />
       <ExploreCourses />
       <TopExams/>

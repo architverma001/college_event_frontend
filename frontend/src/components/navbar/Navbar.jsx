@@ -20,6 +20,7 @@ const navigation = [
   { name: 'Jobs', href: '/jobs', current: false },
   { name: 'Events', href: '/events', current: false },
   { name: 'Stem', href: '/stem', current: false },
+  { name: 'Startups', href: '/startups', current: false },
 
 ]
 
