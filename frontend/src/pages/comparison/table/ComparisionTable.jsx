@@ -44,12 +44,121 @@ const dummyData = [
     "Total Courses": "140",
     "BE/B.Tech": "28"
   },
-  // Add more colleges as needed
+  {
+    name: "IIT Bombay",
+    "First Year Fees": "₹2,50,000",
+    "Hostel Fees": "₹60,000",
+    "Total Fees": "₹9,00,000 (4 Years)",
+    "Ranking": "#3 by NIRF",
+    "Eligibility": "JEE Advanced",
+    "Duration": "4 Years",
+    "Course Offered": "Full Time",
+    "Total Seats": "130",
+    "Mode": "Full Time",
+    "Degree Type": "On Campus",
+    "Course Level": "Graduation",
+    "Course Credential": "Degree",
+    "Fee Link": "#",
+    "Total Courses": "160",
+    "BE/B.Tech": "35"
+  },
+  {
+    name: "IIT Kanpur",
+    "First Year Fees": "₹2,30,000",
+    "Hostel Fees": "₹55,000",
+    "Total Fees": "₹8,60,000 (4 Years)",
+    "Ranking": "#4 by NIRF",
+    "Eligibility": "JEE Advanced",
+    "Duration": "4 Years",
+    "Course Offered": "Full Time",
+    "Total Seats": "125",
+    "Mode": "Full Time",
+    "Degree Type": "On Campus",
+    "Course Level": "Graduation",
+    "Course Credential": "Degree",
+    "Fee Link": "#",
+    "Total Courses": "155",
+    "BE/B.Tech": "32"
+  },
+  {
+    name: "IIM Ahmedabad",
+    "First Year Fees": "₹12,00,000",
+    "Hostel Fees": "₹1,00,000",
+    "Total Fees": "₹24,00,000 (2 Years)",
+    "Ranking": "#1 by NIRF",
+    "Eligibility": "CAT",
+    "Duration": "2 Years",
+    "Course Offered": "Full Time",
+    "Total Seats": "400",
+    "Mode": "Full Time",
+    "Degree Type": "On Campus",
+    "Course Level": "Post Graduation",
+    "Course Credential": "MBA",
+    "Fee Link": "#",
+    "Total Courses": "40",
+    "MBA/PGDM": "40"
+  },
+  {
+    name: "IIM Bangalore",
+    "First Year Fees": "₹11,50,000",
+    "Hostel Fees": "₹1,10,000",
+    "Total Fees": "₹23,00,000 (2 Years)",
+    "Ranking": "#2 by NIRF",
+    "Eligibility": "CAT",
+    "Duration": "2 Years",
+    "Course Offered": "Full Time",
+    "Total Seats": "410",
+    "Mode": "Full Time",
+    "Degree Type": "On Campus",
+    "Course Level": "Post Graduation",
+    "Course Credential": "MBA",
+    "Fee Link": "#",
+    "Total Courses": "45",
+    "MBA/PGDM": "45"
+  },
+  {
+    name: "IIM Calcutta",
+    "First Year Fees": "₹11,00,000",
+    "Hostel Fees": "₹1,05,000",
+    "Total Fees": "₹22,00,000 (2 Years)",
+    "Ranking": "#3 by NIRF",
+    "Eligibility": "CAT",
+    "Duration": "2 Years",
+    "Course Offered": "Full Time",
+    "Total Seats": "420",
+    "Mode": "Full Time",
+    "Degree Type": "On Campus",
+    "Course Level": "Post Graduation",
+    "Course Credential": "MBA",
+    "Fee Link": "#",
+    "Total Courses": "42",
+    "MBA/PGDM": "42"
+  },
+  {
+    name: "IIM Lucknow",
+    "First Year Fees": "₹10,50,000",
+    "Hostel Fees": "₹1,00,000",
+    "Total Fees": "₹21,00,000 (2 Years)",
+    "Ranking": "#4 by NIRF",
+    "Eligibility": "CAT",
+    "Duration": "2 Years",
+    "Course Offered": "Full Time",
+    "Total Seats": "430",
+    "Mode": "Full Time",
+    "Degree Type": "On Campus",
+    "Course Level": "Post Graduation",
+    "Course Credential": "MBA",
+    "Fee Link": "#",
+    "Total Courses": "48",
+    "MBA/PGDM": "48"
+  },
 ];
 
-function ComparisonTable({ college1, college2 }) {
+
+function ComparisonTable({college2 }) {
   // Filter the selected colleges based on college1 and college2 props
-  const selectedColleges = dummyData.filter(college => college.name === college1 || college.name === college2);
+  const selectedColleges = dummyData.filter(college => college2.includes(college.name));
+
 
   // Extracting all facility names dynamically from the first object in dummyData
   const facilityNames = Object.keys(dummyData[0]).filter(key => key !== 'name');

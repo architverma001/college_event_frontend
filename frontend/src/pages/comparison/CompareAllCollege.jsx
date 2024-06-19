@@ -1,65 +1,62 @@
 import React, { useState } from 'react';
 import Comparedropdowncard from './comapre/Comparedropdowncard';
-
+import './compare.css'
 import ComparisonTable from './table/ComparisionTable';
-
+import { AiOutlineClose } from 'react-icons/ai';
 const CompareAllCollege = ({ type }) => {
-  const [college1, setCollege1] = useState('');
-  const [college2, setCollege2] = useState('');
+  // const [college1, setCollege1] = useState('');
+  const [college2, setCollege2] = useState([]);
+  const removeCollege = (college) => {
+    setCollege2(college2.filter((c) => c !== college));
+  };
 
   return (
    <div>
      <div className="flex justify-center items-center mt-8">
-      <div className="max-w-6xl w-[80vw] bg-white mt-4 p-1 mb-4 rounded-md">
+      <div className="max-w-4xl w-[90vw] bg-white mt-4 p-1 mb-4 rounded-md">
         <h2 className="text-xl font-semibold mb-4 mt-3 text-center">
           Select Colleges to Compare
         </h2>
-        <div className="flex flex-wrap lg:gap-12 gap-3 md:gap-6 sm:gap-2 justify-center min-h-[20vh]">
+        <div className="flex flex-col flex-wrap lg:gap-12 gap-3 md:gap-6 sm:gap-2 justify-between min-h-[20vh] p-4 items-center">
+      
+      
       <div>
-        <Comparedropdowncard
-          type={type}
-          selectedCollege={college1}
-          setSelectedCollege={setCollege1}
-        />
-        <img
-          src={college1 ? "/school.png" : "/school.png"}
-          alt="vs"
-          className="w-full h-[20vh] object-contain p-2"
-        />
+       <div className='flex flex-wrap gap-3 items-center '>
+        {
+          college2.map((college) => (
+            <div key={college} className='flex gap-1 py-1 px-3 items-center border rounded-full bg-blue-50'>
+              
+              <p className='text-lg font-sm'>{college}</p>
+              <button
+                    className="text-red-500 hover:text-red-700"
+                    onClick={() => removeCollege(college)}
+                  >
+                    <AiOutlineClose className='bg-red-50 rounded-full' />
+                  </button>
+            </div>
+          ))
+        }
+       </div>
       </div>
+
       <div>
         <Comparedropdowncard
           type={type}
-          selectedCollege={college2}
+          
           setSelectedCollege={setCollege2}
+          selectedCollege={college2}
         />
-        <img
-          src={college2 ? "/school.png" : "/school.png"}
-          alt="vs"
-          className="w-full h-[20vh] object-contain p-2"
-        />
+       
       </div>
     </div>
-        {/* <div className="flex justify-center mt-4">
-          <button
-            onClick={() => {
-              console.log(`Comparing ${college1} and ${college2}`);
-            }}
-            className={`bg-blue-500 mb-2 text-white px-4 py-2 rounded-md shadow-md ${
-              !college1 || !college2 ? 'opacity-50 cursor-not-allowed' : ''
-            }`}
-            disabled={!college1 || !college2}
-          >
-            Compare
-          </button>
-        </div> */}
+       
       </div>
     </div>
 
     <div className='flex justify-center flex-col items-center '>
       {
-        (college1 || college2) && (
-          <ComparisonTable college1={college1} college2={college2} />
+        (college2.length>0) && (
+          <ComparisonTable  college2={college2} />
         )
       }
     
