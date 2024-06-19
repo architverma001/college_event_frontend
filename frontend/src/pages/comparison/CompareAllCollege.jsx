@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Comparedropdowncard from './comapre/Comparedropdowncard';
-import Table from './table/Table';
+
+import ComparisonTable from './table/ComparisionTable';
 
 const CompareAllCollege = ({ type }) => {
   const [college1, setCollege1] = useState('');
@@ -55,11 +56,13 @@ const CompareAllCollege = ({ type }) => {
       </div>
     </div>
 
-    <div className='flex justify-center flex-col items-center'>
-       <Table college1={college1} college2={college2} /> 
-       <Table college1={college1} college2={college2} /> 
-       <Table college1={college1} college2={college2} /> 
-       <Table college1={college1} college2={college2} /> 
+    <div className='flex justify-center flex-col items-center '>
+      {
+        (college1 || college2) && (
+          <ComparisonTable college1={college1} college2={college2} />
+        )
+      }
+    
     </div>
    </div>
   );
