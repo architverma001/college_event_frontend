@@ -20,7 +20,7 @@ const getColleges = async (req, res) => {
 
 const getCollegebyName = async (req, res) => {
   try {
-    const colleges = await College.find({ name: req.params.name });
+    const colleges = await College.find({ collegename: req.params.name });
     if (!colleges) {
       return errorresponse(res, "No colleges found");
     }
@@ -30,9 +30,9 @@ const getCollegebyName = async (req, res) => {
   }
 };
 
-const getcollegebyCourse =async (req, res) => {
+const allCollegename = async (req, res) => {
   try {
-    const colleges = await College.find({ name: req.params.coursename });
+    const colleges = await College.find({}, { collegename: 1, _id: 0 });
     if (!colleges) {
       return errorresponse(res, "No colleges found");
     }
@@ -43,5 +43,7 @@ const getcollegebyCourse =async (req, res) => {
 };
 
 module.exports = {
-  getColleges,getCollegebyName,getcollegebyCourse
+  getColleges,
+  getCollegebyName,
+  allCollegename,
 };

@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 const courseSchema = new Schema({
-    name: {
+    coursename: {
         type: String,
     },
     duration: {
@@ -21,6 +21,9 @@ const courseSchema = new Schema({
     ranking: {
         type: Number,
     },
+    rankingframework: {
+        type: String,
+    },
     totalseats: {
         type: Number,
     },
@@ -30,8 +33,9 @@ const courseSchema = new Schema({
     averagesalary: {
         type: Number,
     },
-    cutoff: {
-        type: Number,
+    cutoffs: {
+        type: Schema.Types.ObjectId,
+        ref: "Cutoff",
     },
 });
 

@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 const collegeSchema = new Schema({
-  name: {
+  collegename: {
     type: String,
   },
   address: {
@@ -54,6 +54,10 @@ const collegeSchema = new Schema({
     type:[Schema.Types.ObjectId],
     ref:"Course"
   },
+  cutoffs:{
+    type:[Schema.Types.ObjectId],
+    ref:"Cutoff"
+  }
   
 });
 

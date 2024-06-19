@@ -20,7 +20,7 @@ const getCourses = async (req, res) => {
 
 const getCoursebyName = async (req, res) => {
     try {
-         const courses = await Course.find({name:req.params.name});
+         const courses = await Course.find({coursename:req.params.name});
         if (!courses) {
             return errorresponse(res, "No courses found");
         }
