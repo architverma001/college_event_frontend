@@ -3,8 +3,29 @@ import Comparedropdowncard from './comapre/Comparedropdowncard';
 import './compare.css'
 import ComparisonTable from './table/ComparisionTable';
 import { AiOutlineClose } from 'react-icons/ai';
+import { useEffect } from 'react';
+import  api  from '../../api';
 const CompareAllCollege = ({ type }) => {
   // const [college1, setCollege1] = useState('');
+  const [dummyData, setDummyData] = useState([]);
+  
+  const fetchData = async () => {
+    console.log('fetching data');
+    try {
+      const response = await api.get('/colleges');
+      if (response.data.success) {
+        setDummyData(response.data.data);
+      } else {
+        console.log('Error fetching data');
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []); // Pa
   const [college2, setCollege2] = useState([]);
   const removeCollege = (college) => {
     setCollege2(college2.filter((c) => c !== college));
@@ -42,7 +63,7 @@ const CompareAllCollege = ({ type }) => {
       <div>
         <Comparedropdowncard
           type={type}
-          
+          data={dummyData}
           setSelectedCollege={setCollege2}
           selectedCollege={college2}
         />
@@ -55,8 +76,8 @@ const CompareAllCollege = ({ type }) => {
 
     <div className='flex justify-center flex-col items-center '>
       {
-        (college2.length>0) && (
-          <ComparisonTable  college2={college2} />
+        (college2.length>0 && dummyData.length>0) && (
+          <ComparisonTable  college2={college2} data = {dummyData} />
         )
       }
     
