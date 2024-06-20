@@ -57,13 +57,13 @@ const Chatbot = () => {
 
   return (
 
-    <div className='flex  flex-col text-center'>
-     <h1 className='text-3xl font-bold ms-10 ps-10'>
+    <div className='flex  flex-col text-center justify-center'>
+     <h1 className='text-3xl font-bold '>
         Don't know what to do ? Ask our chatbot
       </h1>
     <div className='chatbot-container no-scrollbar gap-2 bg-slate-100 '>
        <div className='image-handler'>
-      <img src = "./startup-removebg.png" />
+      <img src = "./startupbeautiful.png" />
       </div>
       <div className="chatbot">
         <h2 className='font-semibold'>Clarify your doubts</h2>
@@ -79,7 +79,7 @@ const Chatbot = () => {
             </div>
           )}
         </div>
-        <div className="input-box">
+        <div className="input-box flex flex-wrap gap-1">
           <input
             type="text"
             value={input}
