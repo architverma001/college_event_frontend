@@ -21,7 +21,7 @@ const getCoursebyName = async (req, res) => {
   try {
     const courses = await Course.find({ coursename: req.params.name });
     if (!courses) {
-      return errorresponse(res, "No courses found");
+      return errorresponse(res,200, "No courses found");
     }
     return successresponse(res, courses, "Courses fetched successfully");
   } catch (error) {
@@ -34,7 +34,7 @@ const allCoursename = async (req, res) => {
     const courses = await Course.find({}, { coursename: 1, _id: 0 });
 
     if (!courses || courses.length === 0) {
-      return errorresponse(res, "No courses found");
+      return errorresponse(res,200, "No courses found");
     }
 
     const uniqueCourses = [

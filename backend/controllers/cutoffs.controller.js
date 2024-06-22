@@ -13,9 +13,9 @@ const predictorByCutoffs = async (req, res) => {
         const collegeId = Cutoff.map((college) => college.college.id);
         const colleges = await College.find({ "_id": { $in: collegeId }});
         if (colleges.length === 0) {
-        return errorresponse(res, 400, "Cutoffs not found");
+        return errorresponse(res, 200, "College not found");
         }
-        return successresponse(res, colleges, "Cutoffs fetched successfully");
+        return successresponse(res, colleges, "College fetched successfully");
     } catch (error) {
         return catchresponse(res);
     }
