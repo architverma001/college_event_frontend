@@ -9,6 +9,7 @@ import Navbar from "./components/navbar/Navbar";
 import { Route, Routes } from "react-router-dom";
 import Startup from "./pages/startup/Startup";
 import CompareAllCollege from "./pages/comparison/CompareAllCollege";
+import CollegePredictor from "./pages/prediction/CollegePredictor";
 function App() {
 
   return (
@@ -21,6 +22,10 @@ function App() {
         <Route path="/btech/comparecollege" element={<CompareAllCollege type={"btech"} />} />
         <Route path="/mtech/comparecollege" element={<CompareAllCollege type={"mtech"} />} />
         <Route path="/mba/comparecollege" element={<CompareAllCollege type={"mba"} />} />
+
+        <Route path="/mba/collegepredictor" element={<CollegePredictor type={"mba"} />} />
+        <Route path="/btech/collegepredictor" element={<CollegePredictor type={"mba"} />} />
+        <Route path="/mtech/collegepredictor" element={<CollegePredictor type={"mba"} />} />
       </Routes>
 
 
