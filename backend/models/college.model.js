@@ -38,27 +38,25 @@ const collegeSchema = new Schema({
   totalrating: {
     type: Number,
   },
-  hostel:{
+  hostel: {
     type: Boolean,
   },
-  startupincubation:{
+  startupincubation: {
     type: Boolean,
   },
-  sports:{
+  sports: {
     type: Boolean,
   },
-  reviews:{
+  reviews: {
     type: String,
   },
-  courses:{
-    type:[Schema.Types.ObjectId],
-    ref:"Course"
-  },
-  cutoffs:{
-    type:[Schema.Types.ObjectId],
-    ref:"Cutoff"
-  }
-  
+  courses: [
+    {
+      id: { type: Schema.Types.ObjectId, ref: "Course" },
+      coursename: { type: String },
+      branchname: { type: String },
+    },
+  ],
 });
 
 const College = mongoose.model("College", collegeSchema);

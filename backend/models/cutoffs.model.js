@@ -1,22 +1,23 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
-const genderSchema = new Schema({
+const gender ={
   male: {
     type: Number,
   },
   female: {
     type: Number,
   },
-});
+};
 
 const cutoffsSchema = new Schema({
   college: {
-    type: Schema.Types.ObjectId,
-    ref: "College",
+    id: { type: Schema.Types.ObjectId, ref: "College" },
+    name: { type: String },
   },
   course: {
-    type: Schema.Types.ObjectId,
-    ref: "Course",
+    id: { type: Schema.Types.ObjectId, ref: "Course" },
+    coursename : { type: String },
+    branchname : { type: String },
   },
   year: {
     type: Number,
@@ -24,15 +25,17 @@ const cutoffsSchema = new Schema({
   round: {
     type: Number,
   },
-  general: [genderSchema],
-  sc: [genderSchema],
-  st: [genderSchema],
-  ews: [genderSchema],
-  obcncl: [genderSchema],
-  ewspwd: [genderSchema],
-  generalpwd: [genderSchema],
-  obcnclpwd: [genderSchema],
-  scpwd: [genderSchema],
+  general: gender,
+  sc: gender,
+  st: gender,
+  ews: gender,
+  obcncl: gender,
+  ewspwd: gender,
+  generalpwd: gender,
+  obcnclpwd: gender,
+  scpwd: gender,
 });
 
 const Cutoffs = mongoose.model("Cutoffs", cutoffsSchema);
+
+module.exports = Cutoffs;
