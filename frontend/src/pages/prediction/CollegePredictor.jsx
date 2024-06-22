@@ -1,10 +1,10 @@
 import React from 'react'
-import CollegePredictorNavbar from './navbar/CollegePredictorNavbar';
+import CollegePredictorInputs from './navbar/CollegePredictorInputs';
 
 const CollegePredictor = () => {
   return (
     <div>
-      <CollegePredictorNavbar/>
+      <CollegePredictorInputs/>
     </div>
   )
 }
