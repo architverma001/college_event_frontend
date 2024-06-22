@@ -9,7 +9,7 @@ const {
 const predictorByCutoffs = async (req, res) => {
     try {
         const {course,rank,category} = req.body;
-        const Cutoff = await Cutoffs.find({"course.coursename":course,[`${category}.male`]:{$lte:rank},round:1,year:2023 },{"college.id":1,"_id":0});
+        const Cutoff = await Cutoffs.find({"course.coursename":course,[`${category}.male`]:{$gte:rank},round:1,year:2023 },{"college.id":1,"_id":0});
         const collegeId = Cutoff.map((college) => college.college.id);
         const colleges = await College.find({ "_id": { $in: collegeId }});
         if (colleges.length === 0) {
