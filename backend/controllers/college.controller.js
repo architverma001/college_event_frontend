@@ -116,11 +116,14 @@ const getCollegebyId = async (req, res) => {
         { _id: college.courses[i].id },
         { college: 0 }
       );
-      courses.push(course);
-      for (let j = 0; j < course.cutoffs.length; j++) {
+      const cuts = course.cutoffs;
+      const temp = course.toObject();
+      delete temp.cutoffs;
+      courses.push(temp);
+      for (let j = 0; j < cuts.length; j++) {
         const cutoff = await Cutoffs.findOne(
-          { _id: course.cutoffs[j].id, round: 1, year: 2023 },
-          { college: 0, course: 0 }
+          { _id: cuts[j].id, round: 1, year: 2023 },
+          { college: 0  }
         );
         if (cutoff) {
           cutoffs.push(cutoff);
@@ -130,6 +133,7 @@ const getCollegebyId = async (req, res) => {
     const collegedata = college.toObject();
     delete collegedata.courses;
     collegedata.courses = courses;
+    collegedata.cutoffs = cutoffs;
     
     console.log(collegedata);
     return successresponse(res, collegedata, "College fetched successfully");
