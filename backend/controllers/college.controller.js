@@ -107,7 +107,7 @@ const getCollegebyId = async (req, res) => {
   try {
     const courses = [];
     const cutoffs = [];
-    const college = await College.findOne({ _id: req.body._id });
+    const college = await College.findOne({ _id: req.params._id });
     if (college.length === 0) {
       return errorresponse(res, 200, "No college found");
     }
