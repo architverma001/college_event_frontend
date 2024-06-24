@@ -1,5 +1,3 @@
-const { date } = require("joi");
-
 const successresponse = (res, data, message) => {
   return res.status(200).json({ data: data, message: message, success: true });
 };

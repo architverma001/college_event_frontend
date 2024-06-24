@@ -35,7 +35,7 @@ const getCollegebyName = async (req, res) => {
 
 const allCollegename = async (req, res) => {
   try {
-    const colleges = await College.find({}, { collegename: 1, _id: 0 });
+    const colleges = await College.find({}, { collegename: 1 });
     if (!colleges) {
       return errorresponse(res,200, "No colleges found");
     }
@@ -102,6 +102,7 @@ const insertCollege = async (req, res) => {
     return catchresponse(res);
   }
 };
+
 
 module.exports = {
   getColleges,
