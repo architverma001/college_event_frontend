@@ -55,7 +55,7 @@ const CollegeCard = () => {
     <div className="flex max-width custom_width items-start relative">
       <button
         onClick={handleScrollLeft}
-        className="absolute left-0 bg-gray-200 text-black p-2 rounded-full smooth-transition z-10 shadow-md hover:bg-gray-300"
+        className="absolute left-0  text-black p-2 rounded-full smooth-transition z-10 "
       >
         <FontAwesomeIcon icon={faChevronLeft} />
       </button>
@@ -66,7 +66,7 @@ const CollegeCard = () => {
         {collegeData.map((colleges) => (
           <div
             key={colleges.id}
-            className={`scrollbar-hide px-6 mx-1 py-2 rounded-lg cursor-pointer transition-all duration-200  ${colleges.type === college ? "bg-blue-500 text-white" : "bg-gray-200 text-gray-700"
+            className={`scrollbar-hide  px-6 mx-1 py-2 rounded-lg cursor-pointer transition-all duration-200  ${colleges.type === college ? "bg-blue-500 text-white" : "bg-gray-200 text-gray-700"
               }`}
             onClick={() => {
               handleCollege(colleges.type);
@@ -78,7 +78,7 @@ const CollegeCard = () => {
       </div>
       <button
         onClick={handleScrollRight}
-        className="absolute right-0 bg-gray-200 text-black p-2 rounded-full smooth-transition z-10 shadow-md hover:bg-gray-300"
+        className="absolute right-0  text-black p-2 rounded-full smooth-transition z-10 "
       >
         <FontAwesomeIcon icon={faChevronRight} />
       </button>

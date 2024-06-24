@@ -10,6 +10,8 @@ import { Route, Routes } from "react-router-dom";
 import Startup from "./pages/startup/Startup";
 import CompareAllCollege from "./pages/comparison/CompareAllCollege";
 import CollegePredictor from "./pages/prediction/CollegePredictor";
+import FindCollege from "./pages/findcollege/FindCollege";
+import CollegeDetails from "./pages/findcollege/collegeDetails/CollegeDetails";
 function App() {
 
   return (
@@ -23,9 +25,17 @@ function App() {
         <Route path="/mtech/comparecollege" element={<CompareAllCollege type={"mtech"} />} />
         <Route path="/mba/comparecollege" element={<CompareAllCollege type={"mba"} />} />
 
-        <Route path="/mba/collegepredictor" element={<CollegePredictor type={"mba"} />} />
-        <Route path="/btech/collegepredictor" element={<CollegePredictor type={"mba"} />} />
+        <Route path="/mba/collegepredictor" element={<CollegePredictor type={"btech"} />} />
+        <Route path="/btech/collegepredictor" element={<CollegePredictor type={"mtech"} />} />
         <Route path="/mtech/collegepredictor" element={<CollegePredictor type={"mba"} />} />
+
+        <Route path="/btech/findcollege" element={<FindCollege type={"btech"} />} />
+        <Route path="/mtech/findcollege" element={<FindCollege  type={"mtech"} />} />
+        <Route path="/mtech/findcollege" element={<FindCollege  type={"mba"} />} />
+
+        <Route path="/collegeinformation/:id" element={<CollegeDetails />} />
+        
+        
       </Routes>
 
 

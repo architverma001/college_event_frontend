@@ -24,7 +24,7 @@ const Card = ({ image, title, description, points, footer }) => {
 
   return (
     <div>
-    <div className="card flex-col width ">
+    <div className="card flex-col width overflow-hidden">
     <div className="flex ">
      
       <div className="flex flex-col flex-grow ml-4">
