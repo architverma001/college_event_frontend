@@ -25,7 +25,7 @@ const getCollegebyName = async (req, res) => {
   try {
     const colleges = await College.find({ collegename: req.params.name });
     if (!colleges) {
-      return errorresponse(res,200, "No colleges found");
+      return errorresponse(res, 200, "No colleges found");
     }
     return successresponse(res, colleges, "Colleges fetched successfully");
   } catch (error) {
@@ -37,7 +37,7 @@ const allCollegename = async (req, res) => {
   try {
     const colleges = await College.find({}, { collegename: 1 });
     if (!colleges) {
-      return errorresponse(res,200, "No colleges found");
+      return errorresponse(res, 200, "No colleges found");
     }
     return successresponse(res, colleges, "Colleges fetched successfully");
   } catch (error) {
@@ -103,10 +103,51 @@ const insertCollege = async (req, res) => {
   }
 };
 
+const getCollegebyId = async (req, res) => {
+  try {
+    const courses = [];
+    const cutoffs = [];
+    const college = await College.findOne({ _id: req.body._id });
+    if (college.length === 0) {
+      return errorresponse(res, 200, "No college found");
+    }
+    for (let i = 0; i < college.courses.length; i++) {
+      let course = await Course.findOne(
+        { _id: college.courses[i].id },
+        { college: 0 }
+      );
+      courses.push(course);
+      for (let j = 0; j < course.cutoffs.length; j++) {
+        const cutoff = await Cutoffs.findOne(
+          { _id: course.cutoffs[j].id, round: 1, year: 2023 },
+          { college: 0, course: 0 }
+        );
+        if (cutoff) {
+          cutoffs.push(cutoff);
+        }
+      }
+    }
+    const collegedata = college.toObject();
+    delete collegedata.courses;
+    collegedata.courses = courses;
+    
+    console.log(collegedata);
+    return successresponse(res, collegedata, "College fetched successfully");
+    // data = {
+    //   college: college,
+    //   courses: courses,
+    //   cutoffs: cutoffs,
+    // };
+    // return successresponse(res, data, "College fetched successfully");
+  } catch (error) {
+    return catchresponse(res);
+  }
+};
 
 module.exports = {
   getColleges,
   getCollegebyName,
   allCollegename,
   insertCollege,
+  getCollegebyId,
 };

@@ -6,12 +6,14 @@ const {
   getCollegebyName,
   allCollegename,
   insertCollege,
+  getCollegebyId,
 } = require("../controllers/college.controller");
 
 router.get("/", getColleges);
 router.get("/name/:name", getCollegebyName);
 router.get("/allname", allCollegename);
 router.get("/insert", insertCollege);
+router.get("/searchid", getCollegebyId);
 
 
 module.exports = router;
