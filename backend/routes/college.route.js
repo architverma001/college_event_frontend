@@ -13,7 +13,7 @@ router.get("/", getColleges);
 router.get("/name/:name", getCollegebyName);
 router.get("/allname", allCollegename);
 router.get("/insert", insertCollege);
-router.get("/searchid", getCollegebyId);
+router.get("/searchid/:id", getCollegebyId);
 
 
 module.exports = router;
