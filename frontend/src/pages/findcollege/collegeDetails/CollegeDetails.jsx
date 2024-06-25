@@ -1,10 +1,29 @@
 import React, { useEffect, useState } from 'react';
 import api from './../../../api';
 import { useParams } from 'react-router-dom';
+import CircularProgress from '@mui/material/CircularProgress';
+import './CollegeDetails.css';
 
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
+import Button from '@mui/material/Button';
 const CollegeDetails = () => {
     const [college, setCollege] = useState(null);
-    const { id } = useParams(); // Use 'id' to match the parameter in the route
+    const { id } = useParams();
+    const [course, setCourse] = useState([]);
+    const [cutoff, setCutoff] = useState([]);
+    const [visibleCourses, setVisibleCourses] = useState(6);
+    const [loading, setLoading] = useState(true);
+    const [loadingCourses, setLoadingCourses] = useState(true);
+
+    const showMoreCourses = () => {
+        setVisibleCourses(prevVisibleCourses => prevVisibleCourses + 4);
+    };
 
     const collegebyid = async () => {
         try {
@@ -12,71 +31,166 @@ const CollegeDetails = () => {
 
             if (response.data.success) {
                 setCollege(response.data.data);
+                setCourse(response.data.data.courses);
+                setCutoff(response.data.data.cutoffs);
+                console.log(cutoff)
             } else {
                 console.log('Error fetching college details');
             }
         } catch (error) {
             console.log('Error:', error);
+        } finally {
+            setLoading(false);
         }
     };
 
     useEffect(() => {
         collegebyid();
-    }, [id]); // Include 'id' in the dependency array
+    }, [id]);
 
-    if (!college) {
-        return <p>Loading college details...</p>;
+    useEffect(() => {
+        if (college) {
+            setLoadingCourses(false);
+        }
+    }, [college]);
+
+    if (loading) {
+        return (
+            <div style={{ minHeight: '80vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                <CircularProgress />
+            </div>
+        );
     }
 
     return (
-        <div className="container mx-auto p-4">
-            <h1 className="text-3xl font-bold mb-4">{college.collegename}</h1>
-            <div className="grid grid-cols-2 gap-4">
-                <div>
-                    <p><strong>Address:</strong> {college.address}</p>
-                    <p><strong>City:</strong> {college.city}</p>
-                    <p><strong>State:</strong> {college.state}</p>
-                    <p><strong>Country:</strong> {college.country}</p>
-                    <p><strong>Contact:</strong> {college.contact}</p>
-                    <p><strong>Email:</strong> {college.email}</p>
-                    <p><strong>Website:</strong> <a href={college.website} target="_blank" rel="noopener noreferrer">{college.website}</a></p>
-                    <p><strong>Approved Authority:</strong> {college.approvedauthority}</p>
-                </div>
-                <div>
-                    <div className="mb-4">
-                        <h2 className="text-xl font-bold mb-2">Cutoffs</h2>
-                        <table className="min-w-full divide-y divide-gray-200">
-                            <thead className="bg-gray-50">
-                                <tr>
-                                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Category</th>
-                                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Cutoff</th>
-                                </tr>
-                            </thead>
-                            <tbody className="bg-white divide-y divide-gray-200">
-                                {college.cutoffs.map((cutoff, index) => (
-                                    <tr key={index}>
-                                        <td className="px-6 py-4 whitespace-nowrap">{cutoff.category}</td>
-                                        <td className="px-6 py-4 whitespace-nowrap">{cutoff.cutoff}</td>
-                                    </tr>
-                                ))}
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                        <h2 className="text-xl font-bold mb-2">Courses</h2>
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                            {college.courses.map((course, index) => (
-                                <div key={index} className="bg-white shadow-md rounded-lg p-4">
-                                    <h3 className="text-lg font-semibold mb-2">{course.name}</h3>
-                                    <p className="text-sm text-gray-600">{course.description}</p>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
+        <div className="hide-scrollbar relative">
+            <div className='flex justify-center items-center'>
+                <img src='/oxford.jpg' className='w-[90vw] object-cover h-[60vh]' alt="College" loading='lazy' />
+            </div>
+            <div className="flex justify-start ps-[5vw] items-center text-center mt-4 mb-2">
+                <p className="college-name">{college.collegename}</p>
+            </div>
+            <div className='flex justify-center items-start mt-2 mb-4'>
+                <div className="flex flex-row gap-4 max-w-[90vw] flex-wrap p-4  rounded-lg  bg-white">
+                    {Object.entries(college).map(([key, value]) => (
+                        key !== '_id' && key !== '__v' && key !== 'courses' && key !== 'cutoffs' && key !== 'image' && (
+                            <div key={key} className="flex flex-col card shadow-none border-none p-4 max-w-[300px]">
+                                <span className="text-gray-600 text-sm uppercase">{key}</span>
+                                {key === 'website' ? (
+                                    <a href={value} target="_blank" rel="noreferrer" className="text-blue-500 hover:underline">{value}</a>
+                                ) : (
+                                    <span className="font-semibold">{value.toString()}</span>
+                                )}
+                            </div>
+                        )
+                    ))}
                 </div>
             </div>
+
+            <div className='flex flex-col justify-center'>
+                <p className='ps-[4vw] text-2xl font-semibold'>Explore the programs</p>
+                {loadingCourses ? (
+                    <div style={{ minHeight: '50vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                        <CircularProgress />
+                    </div>
+                ) : (
+                    <div className="flex flex-wrap justify-center">
+                        {course.slice(0, visibleCourses).map(course => (
+                            <div key={course._id} className="max-w-sm mx-2 my-4 bg-white shadow-sm rounded-lg overflow-hidden w-full md:w-1/2 lg:w-1/3 xl:w-1/4">
+                                <div className="px-6 py-4">
+                                    <div className="font-bold text-xl mb-2">{course.coursename}</div>
+                                    <div className="grid grid-cols-2 gap-4">
+                                        {Object.entries(course).map(([key, value]) => (
+                                            key !== '_id' && key !== '__v' && key !== 'coursename' && (
+                                                <div key={key} className="flex flex-col">
+                                                    <span className="text-sm uppercase font-semibold">{key}</span>
+                                                    <span className="text-gray-600">{value.toString()}</span>
+                                                </div>
+                                            )
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                )}
+                {visibleCourses < course.length && !loadingCourses && (
+                    <div className='flex justify-center items-center w-full'>
+                        <button
+                            onClick={showMoreCourses}
+                            className="w-full md:w-1/2 lg:w-1/3 xl:w-1/4 mx-2 my-4 py-2 bg-blue-500 text-white font-bold rounded-lg hover:bg-blue-700"
+                        >
+                            Show More
+                        </button>
+                    </div>
+                )}
+            </div>
+
+
+
+
+
+            <div className='flex flex-col justify-center p-1'>
+            <p className='ps-[4vw] text-2xl font-semibold '>Know the cutoffs</p>
+            {loadingCourses ? (
+                <div style={{ minHeight: '50vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                    <CircularProgress />
+                </div>
+            ) : (
+                <div className='flex justify-center items-center mb-4 mt-2'>
+                <TableContainer component={Paper} className='max-w-[95vw]'>
+                    <Table sx={{ minWidth: 650 }} aria-label="cutoff table">
+                        <TableHead>
+                             <TableRow sx={{ fontWeight: 'bold' }}>
+                                <TableCell align="center">Course</TableCell>
+                                <TableCell align="center">Branch</TableCell>
+                                <TableCell align="center">General Male</TableCell>
+                                <TableCell align="center">General Female</TableCell>
+                                <TableCell align="center">OBC Male</TableCell>
+                                <TableCell align="center">OBC Female</TableCell>
+                                <TableCell align="center">SC Male</TableCell>
+                                <TableCell align="center">SC Female</TableCell>
+                                <TableCell align="center">ST Male</TableCell>
+                                <TableCell align="center">ST Female</TableCell>
+                            </TableRow>
+                        </TableHead>
+                        <TableBody>
+                            {cutoff.slice(0, visibleCourses).map(course => (
+                                <TableRow key={course._id} sx={{ justifyContent: 'center', textAlign: 'center' }}>
+                                    <TableCell align="center">{course.course.coursename}</TableCell>
+                                    <TableCell align="center">{course.course.branchname}</TableCell>
+                                    <TableCell align="center">{course.general?.male}</TableCell>
+                                    <TableCell align="center">{course.general?.female}</TableCell>
+                                    <TableCell align="center">{course.obcncl?.male}</TableCell>
+                                    <TableCell align="center">{course.obcncl?.female}</TableCell>
+                                    <TableCell align="center">{course.sc?.male}</TableCell>
+                                    <TableCell align="center">{course.sc?.female}</TableCell>
+                                    <TableCell align="center">{course.st?.male}</TableCell>
+                                    <TableCell align="center">{course.st?.female}</TableCell>
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                    </Table>
+                </TableContainer>
+                </div>
+            )}
+           
+            {visibleCourses < cutoff.length && !loadingCourses && (
+                <div className='flex justify-center items-center w-full'>
+                    <Button
+                        onClick={showMoreCourses}
+                        variant="contained"
+                        color="primary"
+                        sx={{ mt: 2 }}
+                    >
+                        Show More
+                    </Button>
+                </div>
+            )}
+        </div>
+        
         </div>
     );
-}
+};
 
 export default CollegeDetails;

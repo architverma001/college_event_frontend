@@ -21,7 +21,7 @@ const FindCollege = () => {
         try {
             const response = await api.get('/colleges/allname');
             setColleges(response.data.data);
-            console.log(response.data.data);
+            
         } catch (error) {
             console.log(error);
         } finally {
@@ -44,7 +44,7 @@ const FindCollege = () => {
     return (
         <div className='find-college-container min-h-full '>
             <div className='oxford '>
-                <img src='/oxford.jpg' alt='college' />
+                <img src='/oxford.jpg' alt='college' loading='lazy' />
             </div>
             <h1 className='margin-top-20 text-white font-semibold z-50 text-3xl'>Find College Details here</h1>
             <div className='search-container'>

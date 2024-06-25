@@ -12,6 +12,7 @@ import CompareAllCollege from "./pages/comparison/CompareAllCollege";
 import CollegePredictor from "./pages/prediction/CollegePredictor";
 import FindCollege from "./pages/findcollege/FindCollege";
 import CollegeDetails from "./pages/findcollege/collegeDetails/CollegeDetails";
+import Ranking from "./pages/ranking/Ranking";
 function App() {
 
   return (
@@ -34,6 +35,10 @@ function App() {
         <Route path="/mtech/findcollege" element={<FindCollege  type={"mba"} />} />
 
         <Route path="/collegeinformation/:id" element={<CollegeDetails />} />
+
+        <Route path="/btech/ranking" element={<Ranking />} />
+        <Route path="/mtech/ranking" element={<Ranking />} />
+        <Route path="/mba/ranking" element={<Ranking/>} />
         
         
       </Routes>
