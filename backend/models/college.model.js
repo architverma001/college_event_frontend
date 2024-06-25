@@ -50,6 +50,16 @@ const collegeSchema = new Schema({
   reviews: {
     type: String,
   },
+  collegeranking: {
+    type: Number,
+  },
+  collegerankingframework: {
+    type: String,
+  },
+  searchcount: {
+    type: Number,
+    default: 0,
+  },
   courses: [
     {
       id: { type: Schema.Types.ObjectId, ref: "Course" },

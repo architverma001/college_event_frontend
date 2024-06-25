@@ -148,10 +148,49 @@ const getCollegebyId = async (req, res) => {
   }
 };
 
+const collegesByRanking = async (req, res) => {
+  try {
+    const colleges = await College.find().sort({ ranking: 1 });
+    if (!colleges) {
+      return errorresponse(res, 200, "No colleges found");
+    }
+    return successresponse(res, colleges, "Colleges fetched successfully");
+  } catch (error) {
+    return catchresponse(res);
+  }
+};
+
+const collegeSearchCount = async (req, res) =>{
+  try{
+    const id = req.body.id;
+    const college = await College.findOne({_id: id});
+    college.searchcount = college.searchcount + 1;
+  }
+  catch(error){
+    return catchresponse(res);
+  }
+}
+
+const collegeBySearchCount = async (req, res) => {
+  try{
+    const colleges = await College.find().sort({searchcount: 1});
+    if(!colleges){
+      return errorresponse(res, 200, "No colleges found");
+    }
+    return successresponse(res, colleges, "Colleges fetched successfully");
+  }
+  catch(error){
+    return catchresponse(res);
+  }
+};
+
 module.exports = {
   getColleges,
   getCollegebyName,
   allCollegename,
   insertCollege,
   getCollegebyId,
+  collegesByRanking,
+  collegeSearchCount,
+  collegeBySearchCount,
 };
