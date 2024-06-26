@@ -13,7 +13,7 @@ const Search = () => {
   };
 
   return (
-    <div className='flex flex-col items-center mt-2 p-2'>
+    <div className='flex flex-col items-center mt-2 p-2 max-w-[90]'>
       <div>
         <img className='main-logo' src="/frintor.png" alt='logo' />
       </div>

@@ -13,6 +13,7 @@ import CollegePredictor from "./pages/prediction/CollegePredictor";
 import FindCollege from "./pages/findcollege/FindCollege";
 import CollegeDetails from "./pages/findcollege/collegeDetails/CollegeDetails";
 import Ranking from "./pages/ranking/Ranking";
+import WelcomePage from "./pages/IIT/components/WelcomePage";
 function App() {
 
   return (
@@ -39,6 +40,10 @@ function App() {
         <Route path="/btech/ranking" element={<Ranking />} />
         <Route path="/mtech/ranking" element={<Ranking />} />
         <Route path="/mba/ranking" element={<Ranking/>} />
+
+        <Route path="/colleges/iit" element={<WelcomePage />} />
+        <Route path="/colleges/iit/events" element={<WelcomePage />} />
+
         
         
       </Routes>

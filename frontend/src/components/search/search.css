@@ -14,7 +14,7 @@
   .text-field {
 
     flex: 1;
-    margin-right: 10px;
+    margin-right: 4px;
   }
   
   .search-button {
@@ -33,5 +33,5 @@
     font-size: 16px;
   }
   .min-width{
-   min-width: 40vw;
+   min-width: 38vw;
   }
