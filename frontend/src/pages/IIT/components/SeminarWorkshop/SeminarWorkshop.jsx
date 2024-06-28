@@ -141,9 +141,9 @@ const SeminarWorkshop = () => {
   }
 
   return (
-    <div className="flex justify-center">
+    <div className="flex justify-center  ">
     <div className=" w-[90vw] max-w-[1400px] ">
-      <h4 className="text-2xl font-bold  text-center">SEMINAR / WORKSHOP</h4>
+      <h4 className="text-2xl font-bold  text-center p-4 mt-12">SEMINAR / WORKSHOP</h4>
       <Carousel animation="slide" autoPlay={true} indicators={true}>
         {slides.map((slide, i) => (
           <Slide key={i} items={slide} />

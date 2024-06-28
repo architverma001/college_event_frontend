@@ -11,17 +11,21 @@ const WelcomePage = () => {
     <div>
       <div className="flex  mt-6 justify-center gap-3">
         <div className=" flex  w-[80vw] max-sm:w-[98vw] gap-10 ">
-          <div className="flex-1 justify-center items-center max-lg:hidden">
-            <h1 className="text-4xl font-bold mb-6">
+          <div className="flex-1 justify-center items-center max-lg:hidden max-h-[100] relative overflow-hidden">
+            <h1 className="text-4xl font-bold mb-6 z-50">
               Ignite Your Career Journey
             </h1>
-            <p className="text-lg text-gray-600">
+           
+            <p className="text-lg text-gray-600 z-50 mb-3">
               Discover global opportunities to learn, showcase your skills, earn
               CV points, and land your dream job with ease.
             </p>
+            <div className="z-0">
+             <img src = "/design.avif"  className="absolute" />
+            </div>
           </div>
 
-          <div className="flex-1">
+          <div className="flex-1 ">
             <div className="flex gap-4 max-sm:flex-col max-sm:p-5 max-sm:gap-0 max-md:flex-2">
               <div className="flex flex-col gap-2 flex-1 max-sm:gap-0">
                 <CustomCard
@@ -69,12 +73,13 @@ const WelcomePage = () => {
           </div>
         </div>
       </div>
-
+      <div className="">
       <SeminarWorkshop /> 
       <Collaboration />
       <CodingEvents />
       <SportsEvents />
        <Culture />
+    </div>
     </div>
   );
 };
