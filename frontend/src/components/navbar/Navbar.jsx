@@ -21,6 +21,8 @@ const navigation = [
   { name: 'Events', href: '/events', current: false },
   { name: 'Stem', href: '/stem', current: false },
   { name: 'Startups', href: '/startups', current: false },
+  { name: 'IIT', href: '/colleges/iit', current: false },
+  { name: 'IIM', href: '/colleges/iim', current: false },
 
 ]
 

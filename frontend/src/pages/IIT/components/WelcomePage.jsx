@@ -70,11 +70,11 @@ const WelcomePage = () => {
         </div>
       </div>
 
-      <SeminarWorkshop />
+      <SeminarWorkshop /> 
       <Collaboration />
       <CodingEvents />
       <SportsEvents />
-      <Culture />
+       <Culture />
     </div>
   );
 };

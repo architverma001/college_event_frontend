@@ -115,20 +115,21 @@ const items = [
 ];
 
 const Slide = ({ items }) => (
-  <div className="bg-white rounded-lg shadow-md p-4">
-    <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 gap-4">
-      {items.map((item, i) => (
-        <div key={i}>
-          <div className="bg-white rounded-lg shadow-md p-4 flex flex-col justify-between h-full">
-            <p className="text-sm text-gray-500">{item.status}</p>
-            <h2 className="text-lg font-bold mt-2">{item.title}</h2>
-            <p className="text-gray-500">{item.date}</p>
-            <p className="text-sm text-gray-500 mt-2">{item.location}</p>
-          </div>
+  <div className="rounded-lg p-4">
+  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+    {items.map((item, i) => (
+      <div key={i}>
+        <div className="bg-white rounded-lg shadow-md p-4 flex flex-col justify-between h-full">
+          <p className="text-sm text-gray-500">{item.status}</p>
+          <h2 className="text-lg font-bold mt-2 h-[3.5rem] overflow-hidden">{item.title}</h2>
+          <p className="text-gray-500 h-[1.4rem] overflow-hidden">{item.date}</p>
+          <p className="text-sm text-gray-500 mt-2 h-[1.4rem] overflow-hidden">{item.location}</p>
         </div>
-      ))}
-    </div>
+      </div>
+    ))}
   </div>
+</div>
+
 );
 
 const SeminarWorkshop = () => {
@@ -140,13 +141,15 @@ const SeminarWorkshop = () => {
   }
 
   return (
-    <div className="max-w-[1300px] mx-auto pt-5">
-      <h4 className="text-2xl font-bold mb-6 text-center">SEMINAR / WORKSHOP</h4>
-      <Carousel animation="slide" autoPlay={false} indicators={false}>
+    <div className="flex justify-center">
+    <div className=" w-[90vw] max-w-[1400px] ">
+      <h4 className="text-2xl font-bold  text-center">SEMINAR / WORKSHOP</h4>
+      <Carousel animation="slide" autoPlay={true} indicators={true}>
         {slides.map((slide, i) => (
           <Slide key={i} items={slide} />
         ))}
       </Carousel>
+    </div>
     </div>
   );
 };
