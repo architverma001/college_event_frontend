@@ -5,6 +5,8 @@ import Collaboration from "./Collaboration/Collaboration";
 import CodingEvents from "./CodingEvents/CodingEvents";
 import SportsEvents from "./SportsEvents/SportsEvents";
 import Culture from "./Culture/Culture";
+import Funding from './Funding/Funding';
+import Opportunities from "./Opportunities/Opportunities";
 
 const WelcomePage = () => {
   return (
@@ -73,12 +75,15 @@ const WelcomePage = () => {
           </div>
         </div>
       </div>
-      <div  style={{ backgroundImage: 'url(/whitebg.jpg)', backgroundSize: 'cover', backgroundPosition: 'center', minHeight:'80vh', height:"100%" }}>
+      <div className="">
       <SeminarWorkshop /> 
       <Collaboration />
       <CodingEvents />
       <SportsEvents />
-       <Culture />
+      <Culture />
+      <Funding/>
+      <Opportunities/>
+      
     </div>
     </div>
   );

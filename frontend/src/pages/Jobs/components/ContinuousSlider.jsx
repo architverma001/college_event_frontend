@@ -1,28 +1,29 @@
-// src/ContinuousSlider.js
 import React, { useEffect, useRef } from 'react';
-import 'tailwindcss/tailwind.css';
+
+
+// import asianpaints from '/asianpaints.png';
+// import flipkart from '/flipkart.png';
+// import loreal from '/loreal.png';
+// import wipro from '/wipro.png';
+// import walmart from '/walmart.png';
 
 const logos = [
-  'https://via.placeholder.com/100x50?text=Logo1',
-  'https://via.placeholder.com/100x50?text=Logo2',
-  'https://via.placeholder.com/100x50?text=Logo3',
-  'https://via.placeholder.com/100x50?text=Logo4',
-  'https://via.placeholder.com/100x50?text=Logo5',
-  'https://via.placeholder.com/100x50?text=Logo1',
-  'https://via.placeholder.com/100x50?text=Logo2',
-  'https://via.placeholder.com/100x50?text=Logo3',
-  'https://via.placeholder.com/100x50?text=Logo4',
-  'https://via.placeholder.com/100x50?text=Logo5',
-  'https://via.placeholder.com/100x50?text=Logo1',
-  'https://via.placeholder.com/100x50?text=Logo2',
-  'https://via.placeholder.com/100x50?text=Logo3',
-  'https://via.placeholder.com/100x50?text=Logo4',
-  'https://via.placeholder.com/100x50?text=Logo5',
-  'https://via.placeholder.com/100x50?text=Logo1',
-  'https://via.placeholder.com/100x50?text=Logo2',
-  'https://via.placeholder.com/100x50?text=Logo3',
-  'https://via.placeholder.com/100x50?text=Logo4',
-  'https://via.placeholder.com/100x50?text=Logo5',
+  '/adityabirla.png',
+  '/amazon.png',
+  '/asianpaints.png',
+  '/flipkart.png',
+  '/loreal.png',
+  '/wipro.png',
+  '/walmart.png',
+  '/adityabirla.png',
+  '/amazon.png',
+  '/asianpaints.png',
+  '/flipkart.png',
+  '/loreal.png',
+  '/wipro.png',
+  '/walmart.png'
+
+
 ];
 
 const ContinuousSlider = () => {
@@ -59,10 +60,10 @@ const ContinuousSlider = () => {
   }, []);
 
   return (
-    <div className="slider-container overflow-hidden whitespace-nowrap mt-5" ref={sliderRef}>
-      <div className="slider-content flex">
+    <div className="slider-container overflow-hidden whitespace-nowrap" ref={sliderRef}>
+      <div className="slider-content flex items-center ">
         {logos.concat(logos).map((logo, index) => (
-          <img src={logo} alt={`Logo ${index}`} className="logo w-20 h-10 mx-2" key={index} />
+          <img src={logo} alt={`Logo ${index}`} className="logo h-20 mx-2" key={index} />
         ))}
       </div>
     </div>

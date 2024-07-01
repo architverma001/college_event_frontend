@@ -7,8 +7,8 @@ const CodingEvents = () => {
   const events = [
     { name: 'Top Coder', date: 'April 20-21' },
     { name: 'Coder Byte', date: 'April 20-21' },
-    { name: 'Code Forces', date: 'April 20-21' },
     { name: 'Leet Code', date: 'April 20-21' },
+    { name: 'Code Forces', date: 'April 20-21' },
     { name: 'Kaggle', date: 'April 20-21' },
     { name: 'Google Code Jam', date: 'April 20-21' },
   ];
@@ -18,7 +18,7 @@ const CodingEvents = () => {
     infinite: true,
     speed: 500,
     slidesToShow: 4,
-    slidesToScroll: 3,
+    slidesToScroll: 3, // Change slidesToScroll to 1 to ensure one card scrolls at a time
     autoplay: true,
     autoplaySpeed: 3000,
     responsive: [
@@ -26,22 +26,21 @@ const CodingEvents = () => {
         breakpoint: 1224, // large screens
         settings: {
           slidesToShow: 4,
-          slidesToScroll: 4,
+          slidesToScroll: 3, // Adjust slidesToScroll accordingly
         }
       },
-
       {
-        breakpoint: 1124, // large screens
+        breakpoint: 1124, // medium-large screens
         settings: {
           slidesToShow: 3,
-          slidesToScroll: 3,
+          slidesToScroll: 2,
         }
       },
       {
         breakpoint: 880, // medium screens
         settings: {
           slidesToShow: 2,
-          slidesToScroll: 2,
+          slidesToScroll: 1,
         }
       },
       {
@@ -54,6 +53,25 @@ const CodingEvents = () => {
     ]
   };
 
+  const getBackgroundColor = (name) => {
+    const firstLetter = name.charAt(0).toLowerCase();
+    
+    // Assigning colors based on ranges of first letters
+    if ('axyzog'.includes(firstLetter)) {
+      return 'bg-[rgb(93,174,255)]'; // Range: a-e
+    } else if ('fhj'.includes(firstLetter)) {
+      return 'bg-[#50e87c]'; // Range: f-k
+    } else if ('lmbn'.includes(firstLetter)) {
+      return 'bg-[#c8bbff]'; // Range: l-p
+    } else if ('pqrist'.includes(firstLetter)) {
+      return 'bg-[#ffdd80]'; // Range: q-u
+    } else if ('kuvwcde'.includes(firstLetter)) {
+      return 'bg-[#fec192]'; // Range: v-z
+    } else {
+      return 'bg-[#ffb1cc]'; // Default
+    }
+  };
+
   return (
     <div className="p-6 flex justify-center">
       <div className="w-[95%]">
@@ -63,10 +81,12 @@ const CodingEvents = () => {
         <Slider {...settings}>
           {events.map((event, index) => (
             <div key={index} className="flex justify-center">
-              <div className="bg-white rounded-lg  shadow-md overflow-hidden min-w-[220px] min-h-[220px] flex flex-col items-center justify-center hover:flex-2">
-                <div className="px-6 py-4 text-center">
-                  <h2 className="text-xl font-semibold text-gray-800">{event.name}</h2>
-                  <p className="text-gray-600 mt-2">{event.date}</p>
+              <div className="mx-2"> {/* Added margin to each card */}
+                <div className={`rounded-lg shadow-md overflow-hidden min-w-[220px] min-h-[220px] flex flex-col items-center justify-center ${getBackgroundColor(event.name)}`}>
+                  <div className="px-6 py-4 text-center">
+                    <h2 className="text-xl font-semibold text-gray-800">{event.name}</h2>
+                    <p className="text-gray-600 mt-2">{event.date}</p>
+                  </div>
                 </div>
               </div>
             </div>

@@ -5,7 +5,7 @@ import "./App.css";
 import HomePage from "./pages/homepage/HomePage";
 import Footer from "./components/footer/Footer";
 import Navbar from "./components/navbar/Navbar";
-
+import eventsData from './Events at IITs (1).json';
 import { Route, Routes } from "react-router-dom";
 import Startup from "./pages/startup/Startup";
 import CompareAllCollege from "./pages/comparison/CompareAllCollege";
@@ -16,6 +16,7 @@ import Ranking from "./pages/ranking/Ranking";
 import WelcomePage from "./pages/IIT/components/WelcomePage";
 import Stemevents from "./stem/Stemevents";
 import Jobpage from "./pages/Jobs/Jobpage";
+import EventsDisplay from "./pages/Events/EventsDisplay";
 function App() {
 
   return (
@@ -44,10 +45,10 @@ function App() {
         <Route path="/mba/ranking" element={<Ranking/>} />
 
         <Route path="/colleges/iit" element={<WelcomePage />} />
-        <Route path="/colleges/iit/events" element={<WelcomePage />} />
+        <Route path="/colleges/iit/event" element={<EventsDisplay data = {eventsData} />} />
         
         <Route path="/colleges/iim" element={<WelcomePage />} />
-        <Route path="/colleges/iim/events" element={<WelcomePage />} />
+        <Route path="/colleges/iim/event" element={<EventsDisplay data = {eventsData} />} />
 
         <Route path = "/stem" element = {<Stemevents/>} />
         <Route path = "/jobs" element = {<Jobpage/>} />

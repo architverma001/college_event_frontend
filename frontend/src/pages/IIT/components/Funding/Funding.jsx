@@ -17,10 +17,10 @@ const funding = [
 
 const Funding = () => {
   return (
-    <div className="flex flex-col items-center p-8 bg-white">
-      <div className="text-2xl font-bold text-blue-600">FUNDING</div>
+    <div className="flex flex-col items-center p-8 bg-gray-100">
+      <div className="text-2xl font-bold  mb-4">FUNDING</div>
       
-      <div className="mt-4 flex flex-wrap justify-center space-x-4 space-y-4 w-full">
+      <div className="flex flex-wrap justify-center space-x-4 space-y-4 w-full">
         {funding.map((fund, index) => (
           <FundingCard key={index} text={fund.text} date={fund.date} />
         ))}
@@ -30,9 +30,9 @@ const Funding = () => {
 };
 
 const FundingCard = ({ text, date }) => (
-  <div className="bg-gradient-to-r from-purple-400 via-pink-500 to-blue-500 text-white font-bold py-4 px-6 rounded-md shadow-md text-center w-1/4 m-2">
-    <div>{text}</div>
-    <div className="text-sm mt-2">{date}</div>
+  <div className="bg-white shadow-sm rounded-lg p-4 text-center w-1/4 m-2">
+    <div className="font-bold">{text}</div>
+    <div className="text-sm text-gray-500 mt-2">{date}</div>
   </div>
 );
 

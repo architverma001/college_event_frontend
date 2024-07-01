@@ -2,35 +2,38 @@ import React from 'react';
 import CSRCard from './CSRCard';
 
 const csrData = [
-    {
-        image: '/lab.png',
-        header: 'Mini Science Centre',
-        description: 'Mini Science Centre in schools for teaching science and maths to school children with easy to use hands-on working models...',
-        link: '#',
-        bgColor: 'bg-blue-500' // Updated background color
-    },
-    {
-        image: '/help.png',
-        header: 'Employee Engagement',
-        description: 'Strategic, custom-designed and masterfully executed programs that are perfectly aligned with...',
-        link: '#',
-        bgColor: 'bg-red-500' // Updated background color
-    },
-    {
-        image: '/study.png',
-        header: 'Tinker Lab',
-        description: 'Tinker Lab is a program where students’ imagination meets technology. It’s a platform where they not only learn and...',
-        link: '#',
-        bgColor: 'bg-yellow-500' // Updated background color
-    },
-    {
-        image: '/bulb.png',
-        header: 'Just Learning',
-        description: 'Innovative ideas presented by students in science exhibitions pan India are covered and are uploaded on our platform...',
-        link: '#',
-        bgColor: 'bg-green-500' // Updated background color
-    }
-];
+     
+        {
+          image: '/robot.jpg',
+          header: 'Robotics Labs',
+          description: 'Advanced robotics labs equipped with state-of-the-art technology for hands-on learning and experimentation in robotics and automation...',
+          link: '#',
+          bgColor: 'bg-purple-500' // Updated background color
+        },
+        {
+          image: '/bulb.jpg',
+          header: 'Thinker Lab',
+          description: 'A creative space where students explore ideas and innovate using modern tools and technology, fostering critical thinking and problem-solving skills...',
+          link: '#',
+          bgColor: 'bg-yellow-500' // Updated background color
+        },
+        {
+          image: '/miniproject.jpg',
+          header: 'Mini Projects',
+          description: 'Engaging mini projects that encourage students to apply theoretical knowledge into practical solutions, enhancing their skills in various domains...',
+          link: '#',
+          bgColor: 'bg-indigo-500' // Updated background color
+        },
+        {
+          image: '/webinar.jpg',
+          header: 'Webinars',
+          description: 'Interactive online sessions featuring industry experts and thought leaders discussing the latest trends, technologies, and innovations...',
+          link: '#',
+          bgColor: 'bg-pink-500' // Updated background color
+        }
+      ];
+      
+      // Example structure for sections array
 
 const CSRSolution = () => {
     return (
@@ -39,7 +42,7 @@ const CSRSolution = () => {
                 Stem Project Based Learning
             </h1>
         <div className="bg-gray-100  p-8 flex flex-wrap justify-center"
-        style={{ backgroundImage: 'url(/bg-tech.jpg)', backgroundSize: 'cover', backgroundPosition: 'center' }}
+        style={{ backgroundImage: 'url(/bg-tech.jpg)', backgroundSize: 'cover', backgroundPosition: 'center' } }
         > 
            
             {csrData.map((data, index) => (
