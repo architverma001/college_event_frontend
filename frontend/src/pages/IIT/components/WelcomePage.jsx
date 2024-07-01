@@ -73,7 +73,7 @@ const WelcomePage = () => {
           </div>
         </div>
       </div>
-      <div className="">
+      <div  style={{ backgroundImage: 'url(/whitebg.jpg)', backgroundSize: 'cover', backgroundPosition: 'center', minHeight:'80vh', height:"100%" }}>
       <SeminarWorkshop /> 
       <Collaboration />
       <CodingEvents />

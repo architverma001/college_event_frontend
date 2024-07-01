@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import axios from 'axios';
 import { CircularProgress } from '@mui/material';
 
@@ -7,12 +7,12 @@ const placeholderImage = "https://via.placeholder.com/64";
 const SearchJobPage = () => {
     const [jobs, setJobs] = useState([]);
     const [query, setQuery] = useState('');
-    const [searchQuery, setSearchQuery] = useState(' jobs india or usa');
+    const [searchQuery, setSearchQuery] = useState('jobs in india');
     const [page, setPage] = useState(1);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
 
-    const options = {
+    const options = useMemo(() => ({
         method: 'GET',
         url: 'https://jsearch.p.rapidapi.com/search',
         params: {
@@ -25,7 +25,7 @@ const SearchJobPage = () => {
             'x-rapidapi-key': '39decb5f5bmsh49b7cba978a6a92p13e922jsnb192b2bb1188',
             'x-rapidapi-host': 'jsearch.p.rapidapi.com'
         }
-    };
+    }), [searchQuery, page]);
 
     const fetchJobs = async () => {
         setLoading(true);
@@ -43,7 +43,7 @@ const SearchJobPage = () => {
 
     useEffect(() => {
         fetchJobs();
-    }, [page, searchQuery]);
+    }, [options]); // useEffect now depends only on options, not page or searchQuery directly
 
     const handleNextPage = () => {
         setPage(prevPage => prevPage + 1);
@@ -56,7 +56,7 @@ const SearchJobPage = () => {
     const handleSearch = (e) => {
         e.preventDefault();
         setSearchQuery(query);
-        setPage(1); // Reset to the first page when a new search is performed
+        setPage(1);
     };
 
     const formatLocation = (city, state, country) => {
