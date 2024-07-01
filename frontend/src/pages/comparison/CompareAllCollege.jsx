@@ -32,10 +32,10 @@ const CompareAllCollege = ({ type }) => {
   };
 
   return (
-   <div>
-     <div className="flex justify-center items-center mt-8">
-      <div className="max-w-4xl w-[90vw] bg-white mt-4 p-1 mb-4 rounded-md">
-        <h2 className="text-xl font-semibold mb-4 mt-3 text-center">
+   <div  style={{ backgroundImage: 'url(/whitebg.jpg)', backgroundSize: 'cover', backgroundPosition: 'center', minHeight:'80vh', height:"100%" }}>
+     <div className="flex justify-center items-center">
+      <div className="max-w-4xl w-[90vw] bg-transparent mt-4 p-1 mb-4 rounded-lg ">
+        <h2 className="text-xl font-semibold text-center">
           Select Colleges to Compare
         </h2>
         <div className="flex flex-col flex-wrap lg:gap-12 gap-3 md:gap-6 sm:gap-2 justify-between min-h-[20vh] p-4 items-center">
@@ -74,7 +74,7 @@ const CompareAllCollege = ({ type }) => {
       </div>
     </div>
 
-    <div className='flex justify-center flex-col items-center '>
+    <div className='flex justify-center flex-col items-center'>
       {
         (college2.length>0 && dummyData.length>0) && (
           <ComparisonTable  college2={college2} data = {dummyData} />

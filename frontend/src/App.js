@@ -14,6 +14,8 @@ import FindCollege from "./pages/findcollege/FindCollege";
 import CollegeDetails from "./pages/findcollege/collegeDetails/CollegeDetails";
 import Ranking from "./pages/ranking/Ranking";
 import WelcomePage from "./pages/IIT/components/WelcomePage";
+import Stemevents from "./stem/Stemevents";
+import Jobpage from "./pages/Jobs/Jobpage";
 function App() {
 
   return (
@@ -43,7 +45,12 @@ function App() {
 
         <Route path="/colleges/iit" element={<WelcomePage />} />
         <Route path="/colleges/iit/events" element={<WelcomePage />} />
+        
+        <Route path="/colleges/iim" element={<WelcomePage />} />
+        <Route path="/colleges/iim/events" element={<WelcomePage />} />
 
+        <Route path = "/stem" element = {<Stemevents/>} />
+        <Route path = "/jobs" element = {<Jobpage/>} />
         
         
       </Routes>
