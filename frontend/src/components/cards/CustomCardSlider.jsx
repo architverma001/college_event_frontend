@@ -86,7 +86,7 @@ const CustomCardSlider = ({ cards,college }) => {
 </button>
     <div className='flex gap-11 w-full max-w-6xl mx-auto overflow-x-auto  overflow-handle p-3'  ref={containerRef}>
       {cards.map((card) => (
-       <Link to={`/${college.toLowerCase()}/${card.url.toLowerCase()}`}>
+       <Link to={`/${card.url.toLowerCase()}`}>
         <Card
         image={card.image}
         title={card.title}

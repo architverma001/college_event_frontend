@@ -52,37 +52,7 @@ const CollegeCard = () => {
         Explore Our Programs
       </h1>
     </div>
-    <div className="flex max-width custom_width items-start relative">
-      <button
-        onClick={handleScrollLeft}
-        className="absolute left-0  text-black p-2 rounded-full smooth-transition z-10 "
-      >
-        <FontAwesomeIcon icon={faChevronLeft} />
-      </button>
-      <div
-        className="flex gap-3 w-full max-w-6xl mx-auto overflow-x-auto overflow-handle px-4"
-        ref={containerRef}
-      >
-        {collegeData.map((colleges) => (
-          <div
-            key={colleges.id}
-            className={`scrollbar-hide  px-6 mx-1 py-2 rounded-lg cursor-pointer transition-all duration-200  ${colleges.type === college ? "bg-blue-500 text-white" : "bg-gray-200 text-gray-700"
-              }`}
-            onClick={() => {
-              handleCollege(colleges.type);
-            }}
-          >
-            {colleges.type}
-          </div>
-        ))}
-      </div>
-      <button
-        onClick={handleScrollRight}
-        className="absolute right-0  text-black p-2 rounded-full smooth-transition z-10 "
-      >
-        <FontAwesomeIcon icon={faChevronRight} />
-      </button>
-    </div>
+    
     <CustomCardSlider cards={cardData} college={college} />
   </div>
   )

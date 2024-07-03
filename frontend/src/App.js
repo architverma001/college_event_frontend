@@ -17,36 +17,26 @@ import WelcomePage from "./pages/IIT/components/WelcomePage";
 import Stemevents from "./stem/Stemevents";
 import Jobpage from "./pages/Jobs/Jobpage";
 import EventsDisplay from "./pages/Events/EventsDisplay";
+import CollegeList from "./pages/BtechMtecMba/CollegeList";
 function App() {
 
   return (
-    <div className="">
+    <div >
       <Navbar />
 
-      <Routes className="">
+      <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/startups" element={<Startup />} />
-        <Route path="/btech/comparecollege" element={<CompareAllCollege type={"btech"} />} />
-        <Route path="/mtech/comparecollege" element={<CompareAllCollege type={"mtech"} />} />
-        <Route path="/mba/comparecollege" element={<CompareAllCollege type={"mba"} />} />
-
-        <Route path="/mba/collegepredictor" element={<CollegePredictor type={"btech"} />} />
-        <Route path="/btech/collegepredictor" element={<CollegePredictor type={"mtech"} />} />
-        <Route path="/mtech/collegepredictor" element={<CollegePredictor type={"mba"} />} />
-
-        <Route path="/btech/findcollege" element={<FindCollege type={"btech"} />} />
-        <Route path="/mtech/findcollege" element={<FindCollege  type={"mtech"} />} />
-        <Route path="/mtech/findcollege" element={<FindCollege  type={"mba"} />} />
-
+        <Route path="/comparecollege" element={<CompareAllCollege  />} />
+        <Route path="collegepredictor" element={<CollegePredictor type={"btech"} />} />
+        <Route path="/findcollege" element={<FindCollege  />} />
         <Route path="/collegeinformation/:id" element={<CollegeDetails />} />
-
-        <Route path="/btech/ranking" element={<Ranking />} />
-        <Route path="/mtech/ranking" element={<Ranking />} />
-        <Route path="/mba/ranking" element={<Ranking/>} />
-
+        <Route path="/ranking" element={<Ranking />} />
         <Route path="/colleges/iit" element={<WelcomePage />} />
         <Route path="/colleges/iit/event" element={<EventsDisplay data = {eventsData} />} />
-        
+        <Route path="/btech/college" element={<CollegeList course = "btech"/>}/>
+        <Route path="/mtech/college" element={<CollegeList course = "mtech"/>}/>
+        <Route path="/mba/college" element={<CollegeList course = "mba"/>}/>
         <Route path="/colleges/iim" element={<WelcomePage />} />
         <Route path="/colleges/iim/event" element={<EventsDisplay data = {eventsData} />} />
 

@@ -14,9 +14,9 @@ import { Link } from 'react-router-dom'
 import './Navbar.css'
 const navigation = [
   { name: 'Home', href: '/', current: true },
-  { name: 'Btech', href: '/Btech/college', current: false },
-  { name: 'Mtech', href: '/Mtech/college', current: false },
-  { name: 'MBA', href: '/MBA/college', current: false },
+  { name: 'Btech', href: '/btech/college', current: false },
+  { name: 'Mtech', href: '/mtech/college', current: false },
+  { name: 'MBA', href: '/mba/college', current: false },
   { name: 'Jobs', href: '/jobs', current: false },
   { name: 'Events', href: '/events', current: false },
   { name: 'Stem', href: '/stem', current: false },

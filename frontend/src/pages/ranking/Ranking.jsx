@@ -69,7 +69,7 @@ const Ranking = () => {
     }, []);
 
   return (
-    <Container style={{ padding: '20px',maxWidth:"1500px" }}>
+    <Container style={{ padding: '20px',maxWidth:"98vw" }}>
       <Typography variant="h4" component="h1" gutterBottom>
         Top BTech Colleges in India 2024
       </Typography>

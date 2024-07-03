@@ -1,13 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { AiOutlineSearch, AiOutlineClose } from 'react-icons/ai';
 import options from './../options'; // Assuming options are imported correctly
 import './compare.css';
+
 const Comparedropdowncard = ({ type, selectedCollege, setSelectedCollege }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const colleges = options.find(option => option.type === type)?.colleges || [];
   const [filteredColleges, setFilteredColleges] = useState(colleges);
   const [isDropdownVisible, setIsDropdownVisible] = useState(false);
   const [isSelectionDisabled, setIsSelectionDisabled] = useState(false);
+  const dropdownRef = useRef(null);
 
   useEffect(() => {
     setFilteredColleges(
@@ -16,6 +18,19 @@ const Comparedropdowncard = ({ type, selectedCollege, setSelectedCollege }) => {
       )
     );
   }, [searchTerm, colleges]);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsDropdownVisible(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [dropdownRef]);
 
   const handleSearchChange = (e) => {
     const term = e.target.value;
@@ -49,20 +64,15 @@ const Comparedropdowncard = ({ type, selectedCollege, setSelectedCollege }) => {
     setSearchTerm(''); // Clear search term after selection
     setIsDropdownVisible(false); // Hide dropdown
     setIsSelectionDisabled(false); // Re-enable selection button
-
-    // Disable search input and show placeholder message if max limit (5) is reached
-   
   };
 
   return (
-    <div className="relative">
+    <div className="relative" ref={dropdownRef}>
       <div className={`${selectedCollege.length >= 5 ? "d-none " : "flex items-center border border-gray-300 rounded px-2 py-1"}`}>
         <AiOutlineSearch className={`${selectedCollege.length >= 5 ? "d-none" : "mx-1"}`} />
         <input
           type="text"
           className={`${selectedCollege.length >= 5 ? "d-none " : " text-gray-600  mx-1"}`}
-
-
           placeholder={selectedCollege.length >= 5 ? "Maximum 5 colleges selected" : "Search College"}
           value={searchTerm}
           onChange={handleSearchChange}
