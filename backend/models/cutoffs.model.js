@@ -29,11 +29,8 @@ const cutoffsSchema = new Schema({
   sc: gender,
   st: gender,
   ews: gender,
-  obcncl: gender,
-  ewspwd: gender,
-  generalpwd: gender,
-  obcnclpwd: gender,
-  scpwd: gender,
+  obc: gender,
+  ews: gender,
 });
 
 const Cutoffs = mongoose.model("Cutoffs", cutoffsSchema);

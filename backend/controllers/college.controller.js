@@ -2,6 +2,7 @@ const College = require("../models/college.model");
 const Course = require("../models/course.model");
 const Cutoffs = require("../models/cutoffs.model");
 const CollegeData = require("../CollegeData.json");
+const Btech = require("../models/btech.model");
 
 const {
   successresponse,
@@ -184,6 +185,18 @@ const collegeBySearchCount = async (req, res) => {
   }
 };
 
+const getBtechCollege = async (req, res) => {
+  try {
+    const colleges = await Btech.find();
+    if (colleges.length === 0) {
+      return errorresponse(res, 200, "Colleges not found");
+    }
+    return successresponse(res, colleges, "Colleges fetched successfully");
+  } catch (error) {
+    return catchresponse(res);
+  }
+};
+
 module.exports = {
   getColleges,
   getCollegebyName,
@@ -193,4 +206,5 @@ module.exports = {
   collegesByRanking,
   collegeSearchCount,
   collegeBySearchCount,
+  getBtechCollege,
 };

@@ -9,7 +9,8 @@ const {
   getCollegebyId,
   collegesByRanking,
   collegeSearchCount,
-  collegeBySearchCount
+  collegeBySearchCount,
+  getBtechCollege,
 } = require("../controllers/college.controller");
 
 router.get("/", getColleges);
@@ -20,6 +21,7 @@ router.get("/searchid/:id", getCollegebyId);
 router.get("/byranking", collegesByRanking);
 router.post("/addsearchcount", collegeSearchCount);
 router.get("/bysearchcount", collegeBySearchCount);
+router.get("/btech", getBtechCollege);
 
 
 
