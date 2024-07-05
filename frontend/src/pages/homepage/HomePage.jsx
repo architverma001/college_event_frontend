@@ -8,6 +8,7 @@ import TopUniversities from "../../components/TopUnivesities/TopUniversities";
 import News from "../../components/news/News";
 import TopExams from './../../components/TopExams/TopExams';
 import CollegeCard from '../../components/collegecard/CollegeCard';
+import Chatbot from "../../components/Chatbot";
 function HomePage() {
  
 
@@ -16,6 +17,7 @@ function HomePage() {
   return (
     <div>
       <Search />
+      <Chatbot/>
       <CollegeCard />
       <TopColleges />
       <hr/>

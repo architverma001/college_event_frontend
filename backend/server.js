@@ -9,7 +9,7 @@ const connectDB = require("./db");
 const collegeRoutes = require("./routes/college.route");
 const courseRoutes = require("./routes/course.route");
 const cutoffsRoutes = require("./routes/cutoffs.route");
-
+const chatRoutes = require('./routes/chatRoutes');
 
 connectDB();
 
@@ -19,6 +19,7 @@ app.use(express.json());
 app.use("/colleges", collegeRoutes);
 app.use("/courses", courseRoutes);
 app.use("/cutoffs", cutoffsRoutes);
+app.use('/api', chatRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);

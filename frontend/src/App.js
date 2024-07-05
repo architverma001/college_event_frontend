@@ -32,6 +32,7 @@ function App() {
         <Route path="/findcollege" element={<FindCollege  />} />
         <Route path="/collegeinformation/:id" element={<CollegeDetails />} />
         <Route path="/ranking" element={<Ranking />} />
+        <Route path="/events" element={<EventsDisplay data = {eventsData} />} />
         <Route path="/colleges/iit" element={<WelcomePage />} />
         <Route path="/colleges/iit/event" element={<EventsDisplay data = {eventsData} />} />
         <Route path="/btech/college" element={<CollegeList course = "btech"/>}/>

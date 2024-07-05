@@ -39,8 +39,11 @@ const CompareAllCollege = () => {
 
   return (
     <div style={{  minHeight: '80vh', height: '100%' }}>
+     
       <div className="flex justify-center items-center">
+        
         <div className="max-w-4xl w-[90vw] bg-transparent mt-4 p-1 mb-4 rounded-lg ">
+   
           <h2 className="text-3xl font-semibold text-center">
             Select Colleges to Compare
           </h2>
