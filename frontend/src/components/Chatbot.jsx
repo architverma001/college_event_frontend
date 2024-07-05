@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useRef } from 'react';
-import axios from 'axios';
 import './chat.css';
 import api from '../api';
 
@@ -7,7 +6,6 @@ const Chatbot = () => {
   const [input, setInput] = useState('');
   const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(false);
-  // const botMessageFirst = { role: 'bot', content: "Hi! I am your AI assistant. How can I help you today?" };
   const chatboxRef = useRef(null);
 
   useEffect(() => {
