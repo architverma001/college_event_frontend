@@ -7,11 +7,11 @@ const Chatbot = () => {
   const [input, setInput] = useState('');
   const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(false);
-  const botMessageFirst = { role: 'bot', content: "Hi! I am your AI assistant. How can I help you today?" };
+  // const botMessageFirst = { role: 'bot', content: "Hi! I am your AI assistant. How can I help you today?" };
   const chatboxRef = useRef(null);
 
   useEffect(() => {
-    setMessages([botMessageFirst]);
+    // setMessages();
   }, []);
 
   useEffect(() => {
@@ -37,11 +37,11 @@ const Chatbot = () => {
         })),
       });
 
-      const botMessage = { role: 'bot', content: response.data.response };
+      const botMessage = { role: 'model', content: response.data.response };
       setMessages(prevMessages => [...prevMessages, botMessage]);
     } catch (error) {
       console.error(error);
-      const errorMessage = { role: 'bot', content: 'Error: Could not fetch response.' };
+      const errorMessage = { role: 'model', content: 'Error: Could not fetch response.' };
       setMessages(prevMessages => [...prevMessages, errorMessage]);
     } finally {
       setLoading(false);
@@ -61,7 +61,7 @@ const Chatbot = () => {
         <div className="chatbot">
           <h2 className='font-semibold mb-2'>Clarify your doubts</h2>
           <div className="chatbox overflow-y-auto h-64 border p-2 mb-2 rounded" ref={chatboxRef}>
-            {messages.map((message, index) => (
+            {(messages.length !=0) && messages.map((message, index) => (
               <div key={index} className={`message ${message.role === 'user' ? 'bg-blue-200 text-right' : 'bg-gray-200 text-left'} p-2 my-1 rounded`}>
                 <p>{message.content}</p>
               </div>
