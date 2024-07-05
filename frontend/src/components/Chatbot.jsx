@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import axios from 'axios';
 import './chat.css';
+import api from '../api';
 
 const Chatbot = () => {
   const [input, setInput] = useState('');
@@ -25,11 +26,10 @@ const Chatbot = () => {
     const userMessage = { role: 'user', content: input };
     const updatedMessages = [...messages, userMessage];
     setMessages(updatedMessages);
-
     setLoading(true);
 
     try {
-      const response = await axios.post('http://localhost:5000/api/chat', {
+      const response = await api.post('/api/chat', {
         message: input,
         history: updatedMessages.map(msg => ({
           role: msg.role,

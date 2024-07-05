@@ -20,13 +20,8 @@ const sendMessage = async (req, res) => {
   const { message, history } = req.body;
 
   try {
-    const chatSession = model.startChat({
-      generationConfig,
-      history,
-    });
-
-    const result = await chatSession.sendMessage(message);
-    res.json({ response: result.response.text() });
+    const response = await model.generateContent(message, generationConfig);
+    res.json({ response: response.response.text()});
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'Failed to fetch response from AI model' });
