@@ -115,7 +115,7 @@
 import React, { useEffect, useState } from 'react';
 import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 const navigation = [
   { name: 'Home', href: '/', current: true },
@@ -129,7 +129,7 @@ const navigation = [
   { name: 'IIT', href: '/colleges/iit', current: false },
   { name: 'IIM', href: '/colleges/iim', current: false },
 ];
-
+ 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
 }
@@ -137,7 +137,7 @@ function classNames(...classes) {
 const Navbar = () => {
   const location = useLocation();
   const [accessToken, setAccessToken] = useState(null);
-
+  const navigationM = useNavigate();
   useEffect(() => {
     const tokenData = JSON.parse(localStorage.getItem('accessToken'));
     if (tokenData && new Date(tokenData.expiresAt) > new Date()) {
@@ -151,6 +151,8 @@ const Navbar = () => {
   const logout = () => {
     localStorage.removeItem('accessToken');
     setAccessToken(null);
+    navigationM('/');
+    
   };
 
   return (

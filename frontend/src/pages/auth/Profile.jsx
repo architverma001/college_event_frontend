@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { jwtDecode } from 'jwt-decode';
 import CircularProgress from '@mui/material/CircularProgress';
+import ErrorPage from './../ErrorPage';
 
 
 const Profile = () => {
@@ -25,10 +26,11 @@ const Profile = () => {
       setLoading(false);
     }, []);
   
-    if (!user || loading) {
+    if (!user ) {
       return (
         <div className=" flex items-center justify-center">
-          <CircularProgress />
+          <ErrorPage />
+          
         </div>
       );
     }

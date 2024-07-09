@@ -47,15 +47,20 @@ const Signin = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="bg-white p-8 rounded shadow-md w-full max-w-md">
+    <div className="min-h-[calc(100vh-200px)] flex items-center justify-center " >
+   
+      <div className="bg-white p-8 rounded shadow-md  max-w-md w-full flex flex-col justify-center" >
         <h2 className="text-2xl font-bold mb-6">Sign In</h2>
-        <GoogleLogin onSuccess={handleGoogleLoginSuccess} onError={handleGoogleLoginError} useOneTap />
-        {/* Add your traditional username/password signin form here if needed */}
+        <p className="text-gray-500 mb-6">Sign in to your account using Google</p>
+        <img src = "/frintor.png" className='h-50 w-100 object-contain' />
+        <div className='w-full flex justify-center items-center'>
+        <GoogleLogin onSuccess={handleGoogleLoginSuccess} onError={handleGoogleLoginError} useOneTap className="w-full flex-1"  />
+        </div>
         <form>
           {/* Your username/password fields and submit button */}
         </form>
       </div>
+   
     </div>
   );
 };
