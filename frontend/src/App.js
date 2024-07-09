@@ -18,6 +18,8 @@ import Stemevents from "./stem/Stemevents";
 import Jobpage from "./pages/Jobs/Jobpage";
 import EventsDisplay from "./pages/Events/EventsDisplay";
 import CollegeList from "./pages/BtechMtecMba/CollegeList";
+import Signin from "./pages/auth/Signin";
+import Dashboard from "./pages/auth/DashBoard";
 function App() {
 
   return (
@@ -40,7 +42,8 @@ function App() {
         <Route path="/mba/college" element={<CollegeList course = "mba"/>}/>
         <Route path="/colleges/iim" element={<WelcomePage />} />
         <Route path="/colleges/iim/event" element={<EventsDisplay data = {eventsData} />} />
-
+        <Route path = "/login" element = {<Signin />} />
+        <Route path = "/dashboard" element = {<Dashboard />} />
         <Route path = "/stem" element = {<Stemevents/>} />
         <Route path = "/jobs" element = {<Jobpage/>} />
         
