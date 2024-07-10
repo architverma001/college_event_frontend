@@ -11,7 +11,7 @@ const sendMailService = async (option) => {
         });
 
         if (response.status === 200) {
-            console.log('Email sent successfully');
+            // console.log('Email sent successfully');
             return { success: true, message: 'Email sent successfully' };
         } else {
             console.error('Failed to send email: ', response);

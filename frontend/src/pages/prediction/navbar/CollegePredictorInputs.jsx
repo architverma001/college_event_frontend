@@ -73,7 +73,7 @@ const CollegePredictorInputs = () => {
       });
 
       if (response.data.success === true) {
-        console.log(response.data.data);
+        // console.log(response.data.data);
         setCollegeResponse(response.data.data);
         setRank('');
         setState('');

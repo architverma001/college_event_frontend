@@ -8,7 +8,7 @@ import { GoogleOAuthProvider } from '@react-oauth/google';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <GoogleOAuthProvider clientId="170123788315-eqcejnr7rderfems2v2i97v9hj7g82si.apps.googleusercontent.com">
+    <GoogleOAuthProvider clientId={process.env.REACT_APP_CLIENT_ID}>
    <BrowserRouter>
     <App />
     </BrowserRouter>
@@ -16,7 +16,5 @@ root.render(
   </React.StrictMode>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+
 reportWebVitals();

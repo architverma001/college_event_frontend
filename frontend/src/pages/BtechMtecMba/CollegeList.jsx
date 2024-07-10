@@ -12,7 +12,8 @@ const CollegeList = ({ course }) => {
   useEffect(() => {
     const fetchColleges = async () => {
       try {
-        const response = await axios.get(`http://localhost:9005/colleges`);
+        // console.log(`${process.env.REACT_APP_BACKEN_URL}/colleges`)
+        const response = await axios.get(`${process.env.REACT_APP_BACKEN_URL}/colleges`);
         setColleges(response.data.data);
         setLoading(false);
       } catch (error) {

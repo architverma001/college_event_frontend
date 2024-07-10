@@ -23,7 +23,7 @@ const News = ({ topic }) => {
         lang: "en",
       },
       headers: {
-        "x-rapidapi-key": "8c66a8ddd5mshcadeef94a5db890p10c1b3jsn228f6fcd191c",
+        "x-rapidapi-key": process.env.REACT_APP_RAPID_NEWS_KEY,
         "x-rapidapi-host": "real-time-news-data.p.rapidapi.com",
       },
     };

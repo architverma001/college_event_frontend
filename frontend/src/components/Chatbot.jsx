@@ -52,7 +52,7 @@ const Chatbot = () => {
       <h1 className='text-3xl font-bold'>
         Don't know what to do? Ask our chatbot
       </h1>
-      <div className='chatbot-container no-scrollbar gap-2 bg-slate-100 p-4 rounded-lg shadow-lg'>
+      <div className='chatbot-container no-scrollbar gap-2 bg-slate-100 p-4 rounded-lg'>
         <div className='image-handler mb-4'>
           <img src="./startupbeautiful.png" alt="Startup" />
         </div>

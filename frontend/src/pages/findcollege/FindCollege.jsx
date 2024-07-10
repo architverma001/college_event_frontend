@@ -23,7 +23,7 @@ const FindCollege = () => {
             const response = await api.get('/colleges/allname');
             setColleges(response.data.data);
         } catch (error) {
-            console.log(error);
+            // console.log(error);
         } finally {
             setLoading(false);
         }

@@ -39,7 +39,7 @@ const sendMessage = async (req, res) => {
   //   responseMimeType: 'text/plain',
   //   history:history,
   // };
-  console.log(history);
+  // console.log(history);
 
   try {
     const chatSession = model.startChat({
@@ -48,7 +48,7 @@ const sendMessage = async (req, res) => {
     });
 
     const result = await chatSession.sendMessage(message);
-    console.log(result.response.text());
+    // console.log(result.response.text());
     res.json({ response: result.response.text() });
   } catch (error) {
     console.error(error);

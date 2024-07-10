@@ -12,13 +12,13 @@ const CompareAllCollege = () => {
   const [selectedType, setSelectedType] = useState('btech'); // Default type
 
   const fetchData = async () => {
-    console.log('fetching data');
+    // console.log('fetching data');
     try {
       const response = await api.get('/colleges');
       if (response.data.success) {
         setDummyData(response.data.data);
       } else {
-        console.log('Error fetching data');
+        // console.log('Error fetching data');
       }
     } catch (error) {
       console.error(error);

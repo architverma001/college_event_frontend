@@ -1,5 +1,6 @@
 import React,{useState,useEffect} from 'react'
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Link, Typography } from '@mui/material';import api from '../../api'
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Link, Typography } from '@mui/material';
+import api from '../../api'
 import { Container, CircularProgress } from '@mui/material';
 
 const CollegeTable = ({ colleges }) => {
@@ -56,9 +57,9 @@ const Ranking = () => {
         try {
             const response = await api.get('/colleges/byranking');
             setColleges(response.data.data);
-            console.log(response.data.data);
+            // console.log(response.data.data);
         } catch (error) {
-            console.log(error);
+            // console.log(error);
         } finally {
             setLoading(false);
         }

@@ -99,7 +99,7 @@ const insertCollege = async (req, res) => {
     }
     return successresponse(res, insertedCollege, "College added successfully");
   } catch (error) {
-    console.log(error);
+    // console.log(error);
     return catchresponse(res);
   }
 };
@@ -136,7 +136,7 @@ const getCollegebyId = async (req, res) => {
     collegedata.courses = courses;
     collegedata.cutoffs = cutoffs;
     
-    console.log(collegedata);
+    // console.log(collegedata);
     return successresponse(res, collegedata, "College fetched successfully");
     // data = {
     //   college: college,

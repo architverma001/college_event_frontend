@@ -36,13 +36,13 @@ const CollegeDetails = () => {
         setCollege(response.data.data);
         setCourse(response.data.data.courses);
         setCutoff(response.data.data.cutoffs);
-        console.log(response.data.data);
+        // console.log(response.data.data);
       } else {
-        console.log('Error fetching college details');
+        // console.log('Error fetching college details');
         setError('Error fetching college details.'); // Set error message
       }
     } catch (error) {
-      console.log('Error:', error);
+      // console.log('Error:', error);
       setError('Error fetching college details.'); // Set error message
     } finally {
       setLoading(false);

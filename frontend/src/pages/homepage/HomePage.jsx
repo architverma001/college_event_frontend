@@ -17,7 +17,7 @@ function HomePage() {
   return (
     <div>
       <Search />
-      <Chatbot/>
+     
       <CollegeCard />
       <TopColleges />
       <hr/>
@@ -25,6 +25,7 @@ function HomePage() {
       <TopUniversities />
       <ExploreCourses />
       <TopExams/>
+      <Chatbot/>
     </div>
   );
 }

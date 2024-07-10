@@ -21,11 +21,11 @@ import CollegeList from "./pages/BtechMtecMba/CollegeList";
 import Signin from "./pages/auth/Signin";
 import Dashboard from "./pages/auth/DashBoard";
 function App() {
-
+  // console.log(process.env)
   return (
     <div >
       <Navbar />
-
+    
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/startups" element={<Startup />} />

@@ -2,13 +2,14 @@ import React from 'react'
 import './startup.css'
 import StartupCells from './components/startupcell/StartupCells'
 import StartupNews from './components/startupnews/StartupNews'
-import Chatbot from './components/chatbot/Chatbot'
+
 import StartupSchemes from './components/startupschemes/StartupSchemes'
 import Blogs from './components/blog/Blogs'
 import Fundingoption from './components/startupschemes/Fundingoption'
 import SchemesPolicies from './components/startupschemes/SchemesPolicies'
 import Disclaimer from './Disclaimer'
 import StartupGuide from './components/startupschemes/StartupGuide'
+import Chatbot from '../../components/Chatbot'
 const Startup = () => {
   return (
     <div className=''>
@@ -25,7 +26,7 @@ const Startup = () => {
       <StartupGuide/>
       
       </div>
-      <Chatbot/>
+     <Chatbot/>
       <StartupSchemes/>
       <Blogs/>
     </div>

@@ -22,7 +22,7 @@ const SearchJobPage = () => {
             date_posted: 'all'
         },
         headers: {
-            'x-rapidapi-key': '39decb5f5bmsh49b7cba978a6a92p13e922jsnb192b2bb1188',
+            'x-rapidapi-key': process.env.REACT_APP_JOB_KEY ,
             'x-rapidapi-host': 'jsearch.p.rapidapi.com'
         }
     }), [searchQuery, page]);

@@ -8,6 +8,7 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
 function ComparisonTable({ data, college2 }) {
+  
   const selectedColleges = data.filter(college => college2.includes(college.collegename));
 
   // Extracting all facility names dynamically from the first object in data, excluding 'SEARCHCOUNT'
