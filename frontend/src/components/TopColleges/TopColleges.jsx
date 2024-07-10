@@ -59,7 +59,7 @@ const TopColleges = () => {
 
   return (
     <div className="mb-6">
-      <div className="w-full max-w-6xl mx-auto item-center mb-6">
+      <div className="w-full max-w-7xl mx-auto item-center mb-6">
         <h1 className="text-gray-600 text-xl font-bold mb-4 sm:text-xl md:text-2xl lg:text-3xl xl:text-3xl">
           Top 10 Colleges
         </h1>
@@ -71,17 +71,16 @@ const TopColleges = () => {
             <FontAwesomeIcon icon={faChevronLeft} />
           </button>
           <div
-            className="flex gap-3 w-full max-w-6xl mx-auto overflow-x-auto overflow-handle"
+            className="flex gap-3 w-full max-w-7xl mx-auto overflow-x-auto overflow-handle"
             ref={containerRef}
           >
             {collegeData.map((colleges) => (
               <div
                 key={colleges.id}
-                className={`scrollbar-hide px-6 mx-1 py-2 hover:cursor-pointer rounded-lg transition-all duration-300 ${
-                  colleges.type === college
+                className={`scrollbar-hide px-6 mx-1 py-2 hover:cursor-pointer rounded-lg transition-all duration-300 ${colleges.type === college
                     ? "bg-blue-500 text-white"
                     : "bg-gray-200 text-gray-700"
-                }`}
+                  }`}
                 onClick={() => {
                   handleCollege(colleges.type);
                 }}
@@ -97,7 +96,7 @@ const TopColleges = () => {
             <FontAwesomeIcon icon={faChevronRight} />
           </button>
         </div>
-        <div className="flex flex-col mt-4">
+        <div className="flex flex-col mt-4 ">
           <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
               <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
@@ -142,7 +141,7 @@ const TopColleges = () => {
                       </th>
                     </tr>
                   </thead>
-                  <tbody className="bg-white divide-y divide-gray-200">
+                  <tbody className="bg-white divide-y divide-gray-200 ">
                     {topTenColleges.map((college) => (
                       <tr key={college.rank}>
                         <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">

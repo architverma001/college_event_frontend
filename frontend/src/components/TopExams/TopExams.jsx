@@ -57,7 +57,7 @@ const ExamCard = ({
 const TopExams = () => {
   return (
     <div className="top-exams-container">
-      <div className="w-full max-w-6xl mx-auto mt-4 mb-4">
+      <div className="w-full max-w-7xl mx-auto mt-4 mb-4">
         <h1 className="text-gray-600 text-xl font-bold mb-4 sm:text-xl md:text-2xl lg:text-3xl xl-text-3xl custom_center">
           Top Exams
         </h1>

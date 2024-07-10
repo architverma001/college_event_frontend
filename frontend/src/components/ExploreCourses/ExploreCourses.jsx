@@ -117,7 +117,7 @@ const ExploreCourses = () => {
 
   return (
     <div className="explore-courses-container">
-      <div className="max-w-6xl mx-auto mt-4 mb-4">
+      <div className="max-w-7xl mx-auto mt-4 mb-4">
         <h1 className="text-gray-600 text-2xl font-bold mb-4 sm:text-xl md:text-2xl lg:text-3xl xl:text-3xl text-custom">
           Explore Courses
         </h1>
@@ -125,11 +125,10 @@ const ExploreCourses = () => {
           {courses.map((course) => (
             <div
               key={course.id}
-              className={`course-type-button px-6 py-2 rounded-lg text-center cursor-pointer whitespace-nowrap ${
-                course.name === selectedCourse
+              className={`course-type-button px-6 py-2 rounded-lg text-center cursor-pointer whitespace-nowrap ${course.name === selectedCourse
                   ? "bg-blue-500 text-white"
                   : "bg-gray-200 text-gray-700"
-              }`}
+                }`}
               onClick={() => handleCourseChange(course.name)}
             >
               {course.name}

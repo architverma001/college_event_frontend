@@ -3,6 +3,7 @@ import axios from "axios";
 import NewsCard from "./NewsCard";
 import { ClipLoader } from "react-spinners";
 import './news.css'; // Ensure you have appropriate styles
+import Loader from "../customloader/Loader";
 
 const News = ({ topic }) => {
   const [news, setNews] = useState([]);
@@ -62,29 +63,29 @@ const News = ({ topic }) => {
   };
 
   return (
-    <div className="container mx-auto mt-10 px-4 max-w-6xl w-full min-h-[50vh] mb-2">
+    <div className="container mx-auto mt-10 px-4 max-w-7xl w-full min-h-[50vh] mb-2">
       <h1 className="text-3xl font-bold text-gray-800 mb-6">
         Latest News and Updates
       </h1>
 
       {loading ? (
         <div className="flex justify-center items-center min-h-[50vh] bg-slate-200">
-          <ClipLoader color="#3498db" size={50} />
+          <Loader />
         </div>
       ) : error ? (
         <div className="flex flex-col items-center justify-center h-[20vh]">
-        {error && (
-          <div className="text-center text-red-500 mb-4 text-lg">{error}</div>
-        )}
-        <div className="flex-1 min-h-[20vh] relative">
-          <div className="absolute inset-0 flex items-center justify-center">
-            {/* Sad face emoji */}
-            <span role="img" aria-label="Sad Face" className="text-9xl">
-            😕
-            </span>
+          {error && (
+            <div className="text-center text-red-500 mb-4 text-lg">{error}</div>
+          )}
+          <div className="flex-1 min-h-[20vh] relative">
+            <div className="absolute inset-0 flex items-center justify-center">
+              {/* Sad face emoji */}
+              <span role="img" aria-label="Sad Face" className="text-9xl">
+                😕
+              </span>
+            </div>
           </div>
         </div>
-      </div>
       ) : (
         <>
           <div className="news-container max-h-[70vh] overflow-y-auto no-scrollbar" ref={newsContainerRef}>
@@ -96,7 +97,7 @@ const News = ({ topic }) => {
           </div>
           {visibleNewsCount < news.length && (
             <div className="text-center mt-2">
-              <button 
+              <button
                 className="px-4 py-2 mb-4 bg-blue-500 text-white rounded hover:bg-blue-700"
                 onClick={handleShowMore}
               >

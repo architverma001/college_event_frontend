@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { CircularProgress, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material';
 import { Link } from 'react-router-dom';
+import Loader from '../../components/customloader/Loader';
 ; // Importing the image
 
 const CollegeList = ({ course }) => {
@@ -49,12 +50,12 @@ const CollegeList = ({ course }) => {
       </div>
       {loading ? (
         <div className="flex justify-center items-center h-64">
-          <CircularProgress color="secondary" size={80} />
+          <Loader  />
         </div>
       ) : error ? (
         <div className="text-red-500 text-center mt-4">{error}</div>
       ) : (
-        <TableContainer component={Paper} className="mt-4">
+         <TableContainer component={Paper} className="mt-4 rounded-[50px] bg-gradient-to-br from-[#cacaca] to-[#f0f0f0] shadow-[20px_20px_78px_#dedede,-20px_-20px_78px_#e2e2e2]">
           <Table>
             <TableHead>
               <TableRow>

@@ -35,25 +35,25 @@ const TopCollegesPlaces = () => {
   ];
   return (
     <div>
-      <div className="w-full max-w-6xl mx-auto mt-4 mb-4">
+      <div className="w-full max-w-7xl mx-auto mt-4 mb-4">
         <h1 className=" text-gray-600 text-xl font-bold mb-4 sm:text-xl md:text-2xl lg:text-3xl xl-text-3xl ">
           Top College Places
         </h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 place-items-center ">
           {places.map((place) => (
             <div>
-                <div className="bg-white shadow-lg rounded-lg overflow-hidden w-[150px]">
-                    <img
-                    src={place.img}
-                    alt={place.name}
-                    className="h-[100px]"
-                    />
-                    <div className="p-4">
-                    <p className="font-bold text-xl text-gray-800 mb-2">
-                        {place.name}
-                    </p>
-                    </div>
+              <div className="bg-white shadow-lg rounded-lg overflow-hidden w-[150px]">
+                <img
+                  src={place.img}
+                  alt={place.name}
+                  className="h-[100px]"
+                />
+                <div className="p-4">
+                  <p className="font-bold text-xl text-gray-800 mb-2">
+                    {place.name}
+                  </p>
                 </div>
+              </div>
             </div>
           ))}
         </div>

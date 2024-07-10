@@ -116,7 +116,7 @@ import React, { useEffect, useState } from 'react';
 import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-
+import './Navbar.css';
 const navigation = [
   { name: 'Home', href: '/', current: true },
   { name: 'Btech', href: '/btech/college', current: false },
@@ -204,17 +204,18 @@ const Navbar = () => {
 
               <div className="flex gap-5">
                 {accessToken ? (
-                  <div className="flex gap-3">
+                  <div className="flex ">
                     <button
                       onClick={logout}
-                      className="bg-white border border-blue-500 text-gray-800 font-semibold px-4 rounded-lg hover:cursor-pointer hover:bg-slate-200 py-1"
+                     className='button-modify'
                     >
                       Logout
                     </button>
-                    <button>
-                      <Link
+                    <button   className="button-modify text-white bg-blue-600 border-none hover:border-none ">
+                      <Link 
+                      className='text-white'
                         to="/dashboard"
-                        className="bg-blue-500 border text-white font-semibold px-4 rounded-lg hover:cursor-pointer hover:bg-blue-700 py-2"
+                      
                       >
                         Dashboard
                       </Link>

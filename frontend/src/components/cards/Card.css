@@ -1,9 +1,17 @@
 .card {
   width: 100%; /* Ensure card takes full width of its container */
   padding: 24px;
+
   background-color: #fff;
   border-radius: 8px;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+
+
+
+  border-radius: 25px;
+background: linear-gradient(45deg, #e6e6e6, #ffffff);
+box-shadow:  15px -15px 30px #e6e6e6,
+             -15px 15px 30px #ffffff;
 }
 
 .card-image {
@@ -94,7 +102,7 @@
 }
 
 .w-35 {
-  width: 25%;
+  width: 28%;
 }
 
 .flex-grow {
@@ -153,8 +161,8 @@
 }
 
 .width{
-width: 30vw;
- min-width: 260px;
+width: 32vw;
+ min-width: 280px;
 }
 
 
@@ -184,7 +192,7 @@ width: 30vw;
   overflow-x: auto;
   scroll-behavior: smooth;
   width: 100%;
-  max-width: 1200px; /* Adjust according to your layout */
+  max-width: 1500px; /* Adjust according to your layout */
 }
 
 .cards-container {

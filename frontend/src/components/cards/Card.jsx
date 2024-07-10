@@ -27,7 +27,7 @@ const Card = ({ image, title, description, points, footer }) => {
     <div className="card flex-col width overflow-hidden">
     <div className="flex ">
      
-      <div className="flex flex-col flex-grow ml-4">
+      <div className="flex flex-col flex-grow ml-4 ">
         <div className="flex justify-between items-center mb-4">
           <div>
             <h2 className="text-lg font-bold text-gray-800 title-container">{title}</h2>

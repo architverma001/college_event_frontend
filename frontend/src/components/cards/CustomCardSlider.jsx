@@ -5,18 +5,18 @@ import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons
 import { Link } from 'react-router-dom';
 
 
-const CustomCardSlider = ({ cards,college }) => {
+const CustomCardSlider = ({ cards, college }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [slidesPerView, setSlidesPerView] = useState(1);
   const containerRef = useRef(null);
   const [containerWidth, setContainerWidth] = useState(0);
   const carduseref = useRef(null);
-  const [cardwidth,setCardwidth] = useState(300);
+  const [cardwidth, setCardwidth] = useState(300);
   useEffect(() => {
     if (containerRef.current) {
       setContainerWidth(containerRef.current.offsetWidth);
     }
-    
+
   }, []);
 
 
@@ -34,8 +34,8 @@ const CustomCardSlider = ({ cards,college }) => {
     window.addEventListener('resize', updateSlidesPerView);
     return () => window.removeEventListener('resize', updateSlidesPerView);
   }, []);
- 
- 
+
+
 
   const nextSlide = () => {
     setCurrentIndex((prevIndex) => (prevIndex + slidesPerView) % cards.length);
@@ -51,7 +51,7 @@ const CustomCardSlider = ({ cards,college }) => {
 
   const handleScrollLeft = () => {
     if (containerRef.current) {
-      const scrollAmount = Math.max(280, containerWidth/2); // Limit scroll to 100 pixels or display size - 50
+      const scrollAmount = Math.max(280, containerWidth / 2); // Limit scroll to 100 pixels or display size - 50
       containerRef.current.scrollTo({
         left: containerRef.current.scrollLeft - scrollAmount,
         behavior: 'smooth',
@@ -61,7 +61,7 @@ const CustomCardSlider = ({ cards,college }) => {
 
   const handleScrollRight = () => {
     if (containerRef.current) {
-      const scrollAmount = Math.max(280, containerWidth/2); // Limit scroll to 100 pixels or display size - 50
+      const scrollAmount = Math.max(280, containerWidth / 2); // Limit scroll to 100 pixels or display size - 50
       containerRef.current.scrollTo({
         left: containerRef.current.scrollLeft + scrollAmount,
         behavior: 'smooth',
@@ -74,42 +74,42 @@ const CustomCardSlider = ({ cards,college }) => {
   return (
     <div className='max-width space-around'>
       <div className='flex'>
-      <button
-  onClick={handleScrollLeft}
-  className=" bg-opacity-70 text-black p-2 rounded-full smooth-transition"
->
-         
-    
-{
-  containerWidth > 600 ? <FontAwesomeIcon icon={faChevronLeft} /> : <div></div>
-}
-</button>
-    <div className='flex gap-11 w-full max-w-6xl mx-auto overflow-x-auto  overflow-handle p-3'  ref={containerRef}>
-      {cards.map((card) => (
-       <Link to={`/${card.url.toLowerCase()}`}>
-        <Card
-        image={card.image}
-        title={card.title}
-        description={card.description}
-        points={card.points}
-        footer={card.footer}/>
-        </Link>
-      ))}
+        <button
+          onClick={handleScrollLeft}
+          className=" bg-opacity-70 text-black p-2 rounded-full smooth-transition"
+        >
 
+
+          {
+            containerWidth > 600 ? <FontAwesomeIcon icon={faChevronLeft} /> : <div></div>
+          }
+        </button>
+        <div className='flex gap-11 w-full max-w-7xl mx-auto overflow-x-auto  overflow-handle p-3' ref={containerRef}>
+          {cards.map((card) => (
+            <Link to={`/${card.url.toLowerCase()}`}>
+              <Card
+                image={card.image}
+                title={card.title}
+                description={card.description}
+                points={card.points}
+                footer={card.footer} />
+            </Link>
+          ))}
+
+        </div>
+        <button
+          onClick={handleScrollRight}
+          className=" bg-opacity-70 text-black p-2 rounded-full smooth-transition"
+        >
+
+
+          {
+            containerWidth > 600 ? <FontAwesomeIcon icon={faChevronRight} /> : <div></div>
+          }
+        </button>
+      </div>
     </div>
-    <button
-  onClick={handleScrollRight}
-  className=" bg-opacity-70 text-black p-2 rounded-full smooth-transition"
->
-         
-    
-{
-  containerWidth > 600 ? <FontAwesomeIcon icon={faChevronRight} /> : <div></div>
-}
-</button>
-    </div>
-  </div>
-    
+
   );
 };
 

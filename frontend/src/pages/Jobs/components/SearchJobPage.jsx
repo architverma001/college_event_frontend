@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import axios from 'axios';
 import { CircularProgress } from '@mui/material';
+import Loader from '../../../components/customloader/Loader';
 
 const placeholderImage = "https://via.placeholder.com/64";
 
@@ -68,7 +69,7 @@ const SearchJobPage = () => {
         if (loading && jobs.length === 0) {
             return (
                 <div className='h-full w-full bg-gray-200 justify-center items-center flex min-h-[50vh]'>
-                    <CircularProgress className='mx-auto' />
+                    <Loader className='mx-auto' />
                 </div>
             );
         }
@@ -85,7 +86,7 @@ const SearchJobPage = () => {
         if (loading) {
             return (
                 <div className='h-full w-full bg-gray-200 justify-center items-center flex min-h-[50vh]'>
-                    <CircularProgress className='mx-auto' />
+                    <Loader className='mx-auto' />
                 </div>
             );
         }

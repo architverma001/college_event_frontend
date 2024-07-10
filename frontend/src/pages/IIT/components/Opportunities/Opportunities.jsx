@@ -18,7 +18,7 @@ const Opportunities = () => {
     <div className="flex flex-col items-center p-8 bg-gray-100 min-h-screen">
       <div className="text-3xl font-bold  mb-8">CHANCE / OPPORTUNITY</div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 w-full max-w-6xl">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 w-full max-w-7xl">
         {opportunities.map((opportunity, index) => (
           <OpportunityCard key={index} text={opportunity.text} date={opportunity.date} org={opportunity.org} />
         ))}
