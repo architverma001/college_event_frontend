@@ -3,12 +3,25 @@ const Course = require("../models/course.model");
 const Cutoffs = require("../models/cutoffs.model");
 const CollegeData = require("../CollegeData.json");
 const Btech = require("../models/btech.model");
+const CollegeDummy = require("../models/collegedummy.model");
 
 const {
   successresponse,
   errorresponse,
   catchresponse,
 } = require("../utils/response");
+
+const getCollegeDummy = async (req, res) => {
+  try {
+    const colleges = await CollegeDummy.find();
+    if (!colleges) {
+      return errorresponse(res, 200, "Colleges not found");
+    }
+    return successresponse(res, colleges, "Colleges fetched successfully");
+  } catch (error) {
+    return catchresponse(res);
+  }
+};
 
 const getColleges = async (req, res) => {
   try {
@@ -207,4 +220,5 @@ module.exports = {
   collegeSearchCount,
   collegeBySearchCount,
   getBtechCollege,
+  getCollegeDummy,
 };
