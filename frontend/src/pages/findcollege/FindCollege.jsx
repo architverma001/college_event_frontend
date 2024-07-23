@@ -20,7 +20,7 @@ const FindCollege = () => {
 
     const fetchColleges = async () => {
         try {
-            const response = await api.get('/colleges/allname');
+            const response = await api.get('/colleges/namedummy');
             setColleges(response.data.data);
         } catch (error) {
             // console.log(error);

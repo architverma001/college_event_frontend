@@ -174,6 +174,35 @@ const getCollegebyId = async (req, res) => {
   }
 };
 
+
+
+const getCollegebyIddummy = async (req, res) => {
+  try {
+    const courses = [];
+    const cutoffs = [];
+    const college = await CollegeDummy.findOne({ _id: req.params.id });
+    if (college.length === 0) {
+      return errorresponse(res, 200, "No college found");
+    }
+       
+     
+    
+    const collegedata = college.toObject();
+    collegedata.cutoffs = cutoffs;
+    
+    // console.log(collegedata);
+    return successresponse(res, collegedata, "College fetched successfully");
+    // data = {
+    //   college: college,
+    //   courses: courses,
+    //   cutoffs: cutoffs,
+    // };
+    // return successresponse(res, data, "College fetched successfully");
+  } catch (error) {
+    return catchresponse(res);
+  }
+};
+
 const collegesByRanking = async (req, res) => {
   try {
     const colleges = await College.find().sort({ ranking: 1 });
@@ -233,5 +262,6 @@ module.exports = {
   collegeBySearchCount,
   getBtechCollege,
   getCollegeDummy,
-  allCollegenamedummy
+  allCollegenamedummy,
+  getCollegebyIddummy
 };

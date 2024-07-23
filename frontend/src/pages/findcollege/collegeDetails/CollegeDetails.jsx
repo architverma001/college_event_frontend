@@ -30,12 +30,12 @@ const CollegeDetails = () => {
 
   const collegebyid = async () => {
     try {
-      const response = await api.get(`/colleges/searchid/${id}`);
+      const response = await api.get(`/collegedummy/searchid/${id}`);
 
       if (response.data.success) {
         setCollege(response.data.data);
         setCourse(response.data.data.courses);
-        setCutoff(response.data.data.cutoffs);
+        setCutoff(response.data.data?.cutoffs);
         // console.log(response.data.data);
       } else {
         // console.log('Error fetching college details');
