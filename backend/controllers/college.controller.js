@@ -59,6 +59,18 @@ const allCollegename = async (req, res) => {
   }
 };
 
+const allCollegenamedummy = async (req, res) => {
+  try {
+    const colleges = await CollegeDummy.find({}, { collegename: 1 });
+    if (!colleges) {
+      return errorresponse(res, 200, "No colleges found");
+    }
+    return successresponse(res, colleges, "Colleges fetched successfully");
+  } catch (error) {
+    return catchresponse(res);
+  }
+};
+
 const insertCollege = async (req, res) => {
   try {
     const college = CollegeData;
@@ -221,4 +233,5 @@ module.exports = {
   collegeBySearchCount,
   getBtechCollege,
   getCollegeDummy,
+  allCollegenamedummy
 };
