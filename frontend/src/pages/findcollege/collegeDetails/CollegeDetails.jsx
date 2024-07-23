@@ -30,13 +30,15 @@ const CollegeDetails = () => {
 
   const collegebyid = async () => {
     try {
-      const response = await api.get(`/collegedummy/searchid/${id}`);
+      const response = await api.get(`/colleges//searchidummy/${id}`);
 
       if (response.data.success) {
         setCollege(response.data.data);
+        // setCourse(response.data.data.course);
         setCourse(response.data.data.courses);
+        console.log(course)
         setCutoff(response.data.data?.cutoffs);
-        // console.log(response.data.data);
+        console.log(response.data.data);
       } else {
         // console.log('Error fetching college details');
         setError('Error fetching college details.'); // Set error message
@@ -74,21 +76,25 @@ const CollegeDetails = () => {
   return (
     <div className="hide-scrollbar relative">
       <div className='flex justify-center items-center'>
-        <img src='/oxford.jpg' className='w-[90vw] object-cover h-[60vh]' alt="College" loading='lazy' />
+        <img src='/oxford.jpg' className='w-[95vw] object-cover h-[60vh]' alt="College" loading='lazy' />
       </div>
       <div className="flex justify-start ps-[5vw] items-center text-center mt-4 mb-2">
         <p className="college-name">{college.collegename}</p>
       </div>
-      <div className='flex justify-center items-start mt-2 mb-4'>
-        <div className="flex flex-row gap-4 max-w-[90vw] flex-wrap p-4 rounded-lg bg-white">
+      
+      <div className='flex justify-center  items-start mt-2 mb-4'>
+        <div className="flex flex-row gap-11 max-w-[90vw] flex-wrap p-4 rounded-lg bg-white">
           {Object.entries(college).map(([key, value]) => (
             key !== '_id' && key !== '__v' && key !== 'courses' && key !== 'cutoffs' && key !== 'image' && key.toUpperCase() !== "SEARCHCOUNT" && (
-              <div key={key} className="flex flex-col card shadow-none border-none p-4 max-w-[300px]">
-                <span className="text-gray-600 text-sm uppercase">{key}</span>
+              <div 
+              key={key} 
+              className="flex flex-col shadow-none border-none p-4 max-w-[300px] text-ellipsis break-words"
+            >
+                <span className="text-gray-600 text-sm uppercase ">{key}</span>
                 {key === 'website' ? (
                   <a href={value} target="_blank" rel="noreferrer" className="text-blue-500 hover:underline">{value}</a>
                 ) : (
-                  <span className="font-semibold">{value.toString()}</span>
+                  <span className="font-semibold">{value?.toString()}</span>
                 )}
               </div>
             )
@@ -104,7 +110,7 @@ const CollegeDetails = () => {
           </div>
         ) : (
           <div className="flex flex-wrap justify-center">
-            {course.slice(0, visibleCourses).map(course => (
+            {course?.slice(0, visibleCourses).map(course => (
               <div key={course._id} className="max-w-sm mx-2 my-4 bg-white shadow-sm rounded-lg overflow-hidden w-full md:w-1/2 lg:w-1/3 xl:w-1/4">
                 <div className="px-6 py-4">
                   <div className="font-bold text-xl mb-2">{course.coursename}</div>
@@ -113,7 +119,7 @@ const CollegeDetails = () => {
                       key !== '_id' && key !== '__v' && key !== 'coursename' && key.toLowerCase() !== "searchcount" && (
                         <div key={key} className="flex flex-col">
                           <span className="text-sm uppercase font-semibold">{key}</span>
-                          <span className="text-gray-600">{value.toString()}</span>
+                          <span className="text-gray-600">{value?.toString()}</span>
                         </div>
                       )
                     ))}
@@ -123,7 +129,7 @@ const CollegeDetails = () => {
             ))}
           </div>
         )}
-        {visibleCourses < course.length && !loadingCourses && (
+        {visibleCourses < course?.length && !loadingCourses && (
           <div className='flex justify-center items-center w-full'>
             <button
               onClick={showMoreCourses}
@@ -160,7 +166,7 @@ const CollegeDetails = () => {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {cutoff.slice(0, visibleCourses).map(course => (
+                  {cutoff?.slice(0, visibleCourses).map(course => (
                     <TableRow key={course._id} sx={{ justifyContent: 'center', textAlign: 'center' }}>
                       <TableCell align="center">{course.course.coursename}</TableCell>
                       <TableCell align="center">{course.course.branchname}</TableCell>
@@ -180,7 +186,7 @@ const CollegeDetails = () => {
           </div>
         )}
 
-        {visibleCourses < cutoff.length && !loadingCourses && (
+        {visibleCourses < cutoff?.length && !loadingCourses && (
           <div className='flex justify-center items-center w-full'>
             <Button
               onClick={showMoreCourses}
