@@ -37,9 +37,9 @@ function App() {
         <Route path="/events" element={<EventsDisplay data = {eventsData} />} />
         <Route path="/colleges/iit" element={<WelcomePage />} />
         <Route path="/colleges/iit/event" element={<EventsDisplay data = {eventsData} />} />
-        <Route path="/btech/college" element={<CollegeList course = "btech"/>}/>
-        <Route path="/mtech/college" element={<CollegeList course = "mtech"/>}/>
-        <Route path="/mba/college" element={<CollegeList course = "mba"/>}/>
+        <Route path="/btech/college" element={<CollegeList course = "B.Tech"/>}/>
+        <Route path="/mtech/college" element={<CollegeList course = "M.Tech"/>}/>
+        <Route path="/mba/college" element={<CollegeList course = "MBA"/>}/>
         <Route path="/colleges/iim" element={<WelcomePage />} />
         <Route path="/colleges/iim/event" element={<EventsDisplay data = {eventsData} />} />
         <Route path = "/login" element = {<Signin />} />

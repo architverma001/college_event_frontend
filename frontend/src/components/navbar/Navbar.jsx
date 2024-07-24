@@ -241,7 +241,7 @@ const Navbar = () => {
                   to={item.href}
                   className={classNames(
                     location.pathname === item.href
-                      ? 'bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium'
+                      ? 'bg-blue-600 text-white block rounded-md px-3 py-2 text-base font-medium'
                       : 'text-gray-700 hover:bg-gray-500 hover:text-white block rounded-md px-3 py-2 text-base font-medium',
                     'block'
                   )}
