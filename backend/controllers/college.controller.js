@@ -11,17 +11,51 @@ const {
   catchresponse,
 } = require("../utils/response");
 
+// const getCollegeDummy = async (req, res) => {
+//   try {
+//     const colleges = await CollegeDummy.find();
+//     if (!colleges) {
+//       return errorresponse(res, 200, "Colleges not found");
+//     }
+//     return successresponse(res, colleges, "Colleges fetched successfully");
+//   } catch (error) {
+//     return catchresponse(res);
+//   }
+// };
+
 const getCollegeDummy = async (req, res) => {
   try {
-    const colleges = await CollegeDummy.find();
-    if (!colleges) {
+    // Get page and limit from query parameters, set defaults if not provided
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 10;
+
+    // Calculate the offset
+    const offset = (page - 1) * limit;
+
+    // Fetch the total number of documents
+    const total = await CollegeDummy.countDocuments();
+
+    // Fetch the colleges with pagination
+    const colleges = await CollegeDummy.find().skip(offset).limit(limit);
+
+    if (!colleges || colleges.length === 0) {
       return errorresponse(res, 200, "Colleges not found");
     }
-    return successresponse(res, colleges, "Colleges fetched successfully");
+
+    // Prepare pagination information
+    const pagination = {
+      totalItems: total,
+      totalPages: Math.ceil(total / limit),
+      currentPage: page,
+      pageSize: limit,
+    };
+
+    return successresponse(res, { colleges, pagination }, "Colleges fetched successfully");
   } catch (error) {
     return catchresponse(res);
   }
 };
+
 
 const getColleges = async (req, res) => {
   try {
@@ -59,17 +93,51 @@ const allCollegename = async (req, res) => {
   }
 };
 
+// const allCollegenamedummy = async (req, res) => {
+//   try {
+//     const colleges = await CollegeDummy.find({}, { collegename: 1 });
+//     if (!colleges) {
+//       return errorresponse(res, 200, "No colleges found");
+//     }
+//     return successresponse(res, colleges, "Colleges fetched successfully");
+//   } catch (error) {
+//     return catchresponse(res);
+//   }
+// };
+
 const allCollegenamedummy = async (req, res) => {
   try {
-    const colleges = await CollegeDummy.find({}, { collegename: 1 });
-    if (!colleges) {
+    // Get page and limit from query parameters, set defaults if not provided
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 10;
+
+    // Calculate the offset
+    const offset = (page - 1) * limit;
+
+    // Fetch the total number of documents
+    const total = await CollegeDummy.countDocuments();
+
+    // Fetch the college names with pagination
+    const colleges = await CollegeDummy.find({}, { collegename: 1 }).skip(offset).limit(limit);
+
+    if (!colleges || colleges.length === 0) {
       return errorresponse(res, 200, "No colleges found");
     }
-    return successresponse(res, colleges, "Colleges fetched successfully");
+
+    // Prepare pagination information
+    const pagination = {
+      totalItems: total,
+      totalPages: Math.ceil(total / limit),
+      currentPage: page,
+      pageSize: limit,
+    };
+
+    return successresponse(res, { colleges, pagination }, "Colleges fetched successfully");
   } catch (error) {
     return catchresponse(res);
   }
 };
+
 
 const insertCollege = async (req, res) => {
   try {

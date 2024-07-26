@@ -18,7 +18,7 @@ const {
 
 router.get("/", getColleges);
 router.get("/name/:name", getCollegebyName);
-router.get("/namedummy/", allCollegenamedummy);
+router.get("/namedummy", allCollegenamedummy);
 router.get("/allname", allCollegename);
 router.get("/insert", insertCollege);
 router.get("/searchid/:id", getCollegebyId);
