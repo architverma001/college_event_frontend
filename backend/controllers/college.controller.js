@@ -51,6 +51,7 @@ const getCollegeDummy = async (req, res) => {
     };
 
     return successresponse(res, { colleges, pagination }, "Colleges fetched successfully");
+    // return successresponse(res, colleges, "Colleges fetched successfully");
   } catch (error) {
     return catchresponse(res);
   }

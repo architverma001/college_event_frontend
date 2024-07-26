@@ -106,22 +106,25 @@ const CollegeList = ({ course }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [page, setPage] = useState(1); // State for the current page
-  const [itemsPerPage] = useState(25); // Number of colleges per page
+  const [itemsPerPage] = useState(10); // Number of colleges per page
   const [hasMore, setHasMore] = useState(true); // To determine if there are more colleges to load
 
   useEffect(() => {
     const fetchColleges = async () => {
       try {
-        const response = await axios.get(`${process.env.REACT_APP_BACKEN_URL}/colleges/collegedummy`, {
+        // const response = await axios.get(`${process.env.REACT_APP_BACKEN_URL}/colleges/collegedummy`, {
+        const response = await axios.get(`http://localhost:9005/colleges/collegedummy`, {
           params: {
             page: page,
             limit: itemsPerPage
           }
         });
-        if (response.data.data.length < itemsPerPage) {
+        console.log(response.data.data.pagination);
+        const pageDetails = response.data.data.pagination;
+        if (response.data.data.colleges.length < itemsPerPage) {
           setHasMore(false); // No more colleges to load
         }
-        setColleges(prevColleges => [...prevColleges, ...response.data.data]);
+        setColleges(prevColleges => [...prevColleges, ...response.data.data.colleges]);
       } catch (error) {
         console.error('Error fetching colleges:', error);
         setError('Error fetching colleges. Please try again later.');
