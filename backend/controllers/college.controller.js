@@ -28,15 +28,17 @@ const getCollegeDummy = async (req, res) => {
     // Get page and limit from query parameters, set defaults if not provided
     const page = parseInt(req.query.page) || 1;
     const limit = parseInt(req.query.limit) || 10;
+    const type = req.query.type;
+    console.log(type);
 
     // Calculate the offset
     const offset = (page - 1) * limit;
 
     // Fetch the total number of documents
-    const total = await CollegeDummy.countDocuments();
+    const total = await CollegeDummy.find({'courses.type':type}).countDocuments();
 
     // Fetch the colleges with pagination
-    const colleges = await CollegeDummy.find().skip(offset).limit(limit);
+    const colleges = await CollegeDummy.find({'courses.type':type}).skip(offset).limit(limit);
 
     if (!colleges || colleges.length === 0) {
       return errorresponse(res, 200, "Colleges not found");
