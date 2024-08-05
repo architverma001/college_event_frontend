@@ -122,7 +122,7 @@ const allCollegenamedummy = async (req, res) => {
 
     // Fetch the college names with pagination
     const colleges = await CollegeDummy.find({}, { collegename: 1 }).skip(offset).limit(limit);
-
+    
     if (!colleges || colleges.length === 0) {
       return errorresponse(res, 200, "No colleges found");
     }

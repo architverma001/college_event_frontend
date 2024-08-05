@@ -1,0 +1,82 @@
+[
+    {
+        "name": "IIT Bombay",
+        "link": "https://www.iitb.ac.in/events"
+    },
+    {
+        "name": "IIT Delhi",
+        "link": "https://home.iitd.ac.in/events-all.php"
+    },
+    {
+        "name": "IIT Kanpur",
+        "link": "https://www.iitk.ac.in/"
+    },
+    {
+        "name": "IIT Kharagpur",
+        "link": "http://www.iitkgp.ac.in/"
+    },
+    {
+        "name": "IIT Madras",
+        "link": "https://www.iitm.ac.in/happenings/events"
+    },
+    {
+        "name": "IIT Roorkee",
+        "link": "https://www.iitr.ac.in/"
+    },
+    {
+        "name": "IIT Guwahati",
+        "link": "https://www.iitg.ac.in/rnd/events.html"
+    },
+    {
+        "name": "IIT Hyderabad",
+        "link": "https://www.iith.ac.in/events/"
+    },
+    {
+        "name": "IIT Jodhpur",
+        "link": "https://iitj.ac.in/students/event_calendar.php"
+    },
+    {
+        "name": "IIT Indore",
+        "link": "https://www.iiti.ac.in/event"
+    },
+    {
+        "name": "IIT Mandi",
+        "link": "https://www.iitmandi.ac.in/"
+    },
+    {
+        "name": "IIT Patna",
+        "link": "https://www.iitp.ac.in/"
+    },
+    {
+        "name": "IIT Ropar",
+        "link": "https://www.iitrpr.ac.in/"
+    },
+    {
+        "name": "IIT Bhubaneswar",
+        "link": "https://www.iitbbs.ac.in/"
+    },
+    {
+        "name": "IIT Gandhinagar",
+        "link": "https://www.iitgn.ac.in/"
+    },
+    {
+        "name": "IIT Jammu",
+        "link": "https://www.iitjammu.ac.in/"
+    },
+    {
+        "name": "IIT Dharwad",
+        "link": "https://www.iitdh.ac.in/"
+    },
+    {
+        "name": "IIT Bhilai",
+        "link": "https://www.iitbhilai.ac.in/"
+    },
+    {
+        "name": "IIT Goa",
+        "link": "https://www.iitgoa.ac.in/"
+    },
+    {
+        "name": "IIT Palakkad",
+        "link": "https://www.iitpkd.ac.in/"
+    }
+]

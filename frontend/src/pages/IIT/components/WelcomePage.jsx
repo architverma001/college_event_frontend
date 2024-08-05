@@ -7,6 +7,12 @@ import SportsEvents from "./SportsEvents/SportsEvents";
 import Culture from "./Culture/Culture";
 import Funding from './Funding/Funding';
 import Opportunities from "./Opportunities/Opportunities";
+import EventsDisplay from "../../Events/EventsDisplay";
+import eventdata from "../../../Events at IITs (1).json";
+import collegeEventLink from "../../../IIT_College_Event_Link.json";
+import CollegeEventLink from "./CollegeEventLink/CollegeEventLink";
+
+
 
 const WelcomePage = () => {
   return (
@@ -80,6 +86,10 @@ const WelcomePage = () => {
       <Collaboration />
       <CodingEvents />
       <SportsEvents />
+      <div className="mt-5">
+      <EventsDisplay data={eventdata} />
+      </div>
+      <CollegeEventLink data={collegeEventLink} />
       <Culture />
       <Funding/>
       <Opportunities/>

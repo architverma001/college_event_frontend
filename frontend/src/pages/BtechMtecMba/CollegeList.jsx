@@ -110,7 +110,7 @@ import "./CollegeListCss.css";
 
 const CollegeList = ({ course }) => {
   const [colleges, setColleges] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true); 
   const [error, setError] = useState(null);
   const [page, setPage] = useState(1); // State for the current page
   const [itemsPerPage] = useState(10); // Number of colleges per page
