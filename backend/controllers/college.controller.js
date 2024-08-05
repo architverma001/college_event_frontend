@@ -108,26 +108,57 @@ const allCollegename = async (req, res) => {
 //   }
 // };
 
+// const allCollegenamedummy = async (req, res) => {
+//   try {
+//     // Get page and limit from query parameters, set defaults if not provided
+//     const page = parseInt(req.query.page) || 1;
+//     const limit = parseInt(req.query.limit) || 10;
+
+//     // Calculate the offset
+//     const offset = (page - 1) * limit;
+
+//     // Fetch the total number of documents
+//     const total = await CollegeDummy.countDocuments();
+
+//     // Fetch the college names with pagination
+//     const colleges = await CollegeDummy.find({}, { collegename: 1 }).skip(offset).limit(limit);
+
+//     if (!colleges || colleges.length === 0) {
+//       return errorresponse(res, 200, "No colleges found");
+//     }
+
+//     // Prepare pagination information
+//     const pagination = {
+//       totalItems: total,
+//       totalPages: Math.ceil(total / limit),
+//       currentPage: page,
+//       pageSize: limit,
+//     };
+
+//     return successresponse(res, { colleges, pagination }, "Colleges fetched successfully");
+//   } catch (error) {
+//     return catchresponse(res);
+//   }
+// };
+
 const allCollegenamedummy = async (req, res) => {
   try {
-    // Get page and limit from query parameters, set defaults if not provided
     const page = parseInt(req.query.page) || 1;
     const limit = parseInt(req.query.limit) || 10;
+    const searchTerm = req.query.searchTerm ? req.query.searchTerm.toLowerCase() : '';
 
-    // Calculate the offset
-    const offset = (page - 1) * limit;
+    const total = await CollegeDummy.countDocuments({
+      collegename: { $regex: searchTerm, $options: 'i' } // Case-insensitive search
+    });
 
-    // Fetch the total number of documents
-    const total = await CollegeDummy.countDocuments();
+    const colleges = await CollegeDummy.find({
+      collegename: { $regex: searchTerm, $options: 'i' }
+    }, { collegename: 1 }).skip((page - 1) * limit).limit(limit);
 
-    // Fetch the college names with pagination
-    const colleges = await CollegeDummy.find({}, { collegename: 1 }).skip(offset).limit(limit);
-    
     if (!colleges || colleges.length === 0) {
       return errorresponse(res, 200, "No colleges found");
     }
 
-    // Prepare pagination information
     const pagination = {
       totalItems: total,
       totalPages: Math.ceil(total / limit),
@@ -135,9 +166,14 @@ const allCollegenamedummy = async (req, res) => {
       pageSize: limit,
     };
 
-    return successresponse(res, { colleges, pagination }, "Colleges fetched successfully");
+    return res.status(200).json({
+      success: true,
+      message: "Colleges fetched successfully",
+      data: { colleges, pagination },
+    });
   } catch (error) {
-    return catchresponse(res);
+    // Handle error
+    return errorresponse(res, 500, "Internal Server Error");
   }
 };
 
