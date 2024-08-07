@@ -110,7 +110,7 @@ import "./CollegeListCss.css";
 
 const CollegeList = ({ course }) => {
   const [colleges, setColleges] = useState([]);
-  const [loading, setLoading] = useState(true); 
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [page, setPage] = useState(1); // State for the current page
   const [itemsPerPage] = useState(10); // Number of colleges per page
@@ -119,23 +119,25 @@ const CollegeList = ({ course }) => {
   const [endItem, setEndItem] = useState(0);
 
   const handleNext = () => {
-    if(page<pageDetails.totalPages){
-      setPage(page+1);
+    if (page < pageDetails.totalPages) {
+      setPage(page + 1);
     }
   };
   const handlePrevious = () => {
-    if(page>1){
-      setPage(page-1);
+    if (page > 1) {
+      setPage(page - 1);
     }
   };
 
   useEffect(() => {
     const fetchColleges = async () => {
       try {
-        // const response = await axios.get(`${process.env.REACT_APP_BACKEN_URL}/colleges/collegedummy`, {
         const response = await axios.get(
-          `http://localhost:9005/colleges/collegedummy`,
+          `${process.env.REACT_APP_BACKEN_URL}/colleges/collegedummy`,
           {
+            // const response = await axios.get(
+            //   `http://localhost:9005/colleges/collegedummy`,
+            //   {
             params: {
               page: page,
               limit: itemsPerPage,
@@ -160,7 +162,7 @@ const CollegeList = ({ course }) => {
     };
 
     fetchColleges();
-  }, [page,course]);
+  }, [page, course]);
 
   const capitalizeFirstLetter = (string) => {
     return string.charAt(0).toUpperCase() + string.slice(1);
@@ -251,9 +253,12 @@ const CollegeList = ({ course }) => {
               <div className="flex">
                 <button
                   onClick={handlePrevious}
-
-                  className={page === 1 ? 'flex items-center justify-center px-3 h-8 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 cursor-not-allowed' : 'flex items-center justify-center px-3 h-8 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700' }
-                  disabled = {page === 1}
+                  className={
+                    page === 1
+                      ? "flex items-center justify-center px-3 h-8 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 cursor-not-allowed"
+                      : "flex items-center justify-center px-3 h-8 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700"
+                  }
+                  disabled={page === 1}
                 >
                   <svg
                     className="w-3.5 h-3.5 me-2 rtl:rotate-180"
@@ -274,8 +279,12 @@ const CollegeList = ({ course }) => {
                 </button>
                 <button
                   onClick={handleNext}
-                  disabled = {page === pageDetails.totalPages}
-                  className={page === pageDetails.totalPages ? 'flex items-center justify-center px-3 h-8 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 cursor-not-allowed' : 'flex items-center justify-center px-3 h-8 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700' }
+                  disabled={page === pageDetails.totalPages}
+                  className={
+                    page === pageDetails.totalPages
+                      ? "flex items-center justify-center px-3 h-8 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 cursor-not-allowed"
+                      : "flex items-center justify-center px-3 h-8 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700"
+                  }
                 >
                   Next
                   <svg

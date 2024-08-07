@@ -13,7 +13,8 @@ import CollegePredictor from "./pages/prediction/CollegePredictor";
 import FindCollege from "./pages/findcollege/FindCollege";
 import CollegeDetails from "./pages/findcollege/collegeDetails/CollegeDetails";
 import Ranking from "./pages/ranking/Ranking";
-import WelcomePage from "./pages/IIT/components/WelcomePage";
+import IITWelcomePage from "./pages/IIT/components/IITWelcomePage";
+import IIMWelcomePage from "./pages/IIM/components/IIMWelcomePage";
 import Stemevents from "./stem/Stemevents";
 import Jobpage from "./pages/Jobs/Jobpage";
 import EventsDisplay from "./pages/Events/EventsDisplay";
@@ -35,12 +36,12 @@ function App() {
         <Route path="/collegeinformation/:id" element={<CollegeDetails />} />
         <Route path="/ranking" element={<Ranking />} />
         <Route path="/events" element={<EventsDisplay data = {eventsData} />} />
-        <Route path="/colleges/iit" element={<WelcomePage />} />
+        <Route path="/colleges/iit" element={<IITWelcomePage />} />
         <Route path="/colleges/iit/event" element={<EventsDisplay data = {eventsData} />} />
         <Route path="/btech/college" element={<CollegeList course = "B.Tech"/>}/>
         <Route path="/mtech/college" element={<CollegeList course = "M.Tech"/>}/>
         <Route path="/mba/college" element={<CollegeList course = "MBA"/>}/>
-        <Route path="/colleges/iim" element={<WelcomePage />} />
+        <Route path="/colleges/iim" element={<IIMWelcomePage />} />
         <Route path="/colleges/iim/event" element={<EventsDisplay data = {eventsData} />} />
         <Route path = "/login" element = {<Signin />} />
         <Route path = "/dashboard" element = {<Dashboard />} />
